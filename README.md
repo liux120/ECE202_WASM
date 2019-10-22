@@ -7,10 +7,10 @@ The object of this project is getting familiar with the WASM and implement WASM 
 
 *NOTE: DDFlow a macroprogramming abstraction and accompanying runtime that provides an efficient means to program high-quality distributed applications that span a diverse and dynamic IoTnetwork. RemedIoT is a remedial action framework for resolving Internet-of-Things conflicts.*
 
-# envisioned approach
-# planned deliverables
-# rough timeline
-# contribution
+## envisioned approach
+## planned deliverables
+## rough timeline
+## contribution
 
 
 ## Welcome to GitHub Pages
