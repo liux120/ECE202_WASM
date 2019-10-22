@@ -3,15 +3,39 @@ This is a course project of EE202 embedded system. The group members are Ximeng 
 Project #11 Framework to Expose IoT Sensor and Actuator Services.
 
 # Abstract  
-The object of this project is getting familiar with the WASM and implement WASM in the general embedded devices under distributed and heterogeneous settings. To achieve the goal, members plan to first run WASM without the browser on a Raspberry Pi or personal laptops. Then, members will implement the WASM with actuators, such as sensors and cameras. Communication network using the WASM framework tend to be accomplished at this stage. Finally, the WASM framework will be generalized so that the WASM can be run in distributed and heterogeneous settings. In the future, we plan to combine the WASM with other frameworks, such as DDFlow and RemedIoT.
+The objective of this project is getting familiar with the WASM and implement WASM in the general embedded devices under distributed and heterogeneous settings. To achieve the goal, members plan to first run WASM without the browser on a Raspberry Pi or personal laptops. Then, members will implement the WASM with actuators, such as sensors and cameras. Communication network using the WASM framework tend to be accomplished at this stage. Finally, the WASM framework will be generalized so that the WASM can be run in distributed and heterogeneous settings. In the future, we plan to combine the WASM with other frameworks, such as DDFlow and RemedIoT.
 
 *NOTE: DDFlow a macroprogramming abstraction and accompanying runtime that provides an efficient means to program high-quality distributed applications that span a diverse and dynamic IoTnetwork. RemedIoT is a remedial action framework for resolving Internet-of-Things conflicts.*
 
+## Prospective Result
+1. Make the non-browser WASM work on the Intel/ARM based processers and display "Hello World."
+1. Implement the drivers for sensors and actuators with WASM
+1. Generalize the WASM framework and develop an API for IoT devices
+1. In the future, Combine the framework with state-of-art framework, e.g. DDFlow and RemedIoT. 
+
 ## Timeline
+* Week 4-5: Get familiar with WASM and make it run on IoT devices
+* Week 5-6: Implement simple sensors and actuators (Buttons, Serial Ports, and etc.) on the devices and the interface using WASM
+* Week 6-8: Further develop the interface with WASM on complex prepherals (IMU, cameras).
+* Week 8-10: Develop an API for general devices. 
 
 ## Member Contribution
+* Ximeng: 
+  * WASM implementation on Windows; 
+  * Serial transmission interaction using WASM; 
+  * Interaction with IMU; 
+  * Part of the API development.
+* Yiru: 
+  * WASM implementation on Raspberry Pi; 
+  * Bit interaction using WASM; 
+  * Interaction with camera; 
+  * Part of the API development.
 
 
+=======================================================================================================================================
+
+
+# Template
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/liux120/ECE202_WASM/blob/master/README.md) to maintain and preview the content for your website in Markdown files.
