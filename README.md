@@ -23,12 +23,12 @@ The objective of this project is getting familiar with the WASM and implement WA
 * Ximeng: 
   * WASM implementation on Windows; 
   * Serial transmission interaction using WASM; 
-  * Interaction with IMU; 
+  * Interaction with camera; 
   * Part of the API development.
 * Yiru: 
   * WASM implementation on Raspberry Pi; 
   * Bit interaction using WASM; 
-  * Interaction with camera; 
+  * Interaction with IMU; 
   * Part of the API development.
 
 ===============================================================================
