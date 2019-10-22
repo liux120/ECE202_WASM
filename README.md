@@ -4,6 +4,7 @@ Project #11 Framework to Expose IoT Sensor and Actuator Services.
 
 # Abstract
   DDFlow a macroprogramming abstraction and accompanying runtime that provides an efficient means to program high-quality distributed applications that span a diverse and dynamic IoTnetwork. RemedIoT is a remedial action framework for resolving Internet-of-Things conflicts. 
+  
   The object of this project is getting familiar with the WASM and implement WASM in the general embedded devices under distributed and heterogeneous settings. To achieve the goal, members plan to first run WASM without the browser on a Raspberry Pi or personal laptops. Then, members will implement the WASM with actuators, such as sensors and cameras. Communication network using the WASM framework tend to be accomplished at this stage. Finally, the WASM framework will be generalized so that the WASM can be run in distributed and heterogeneous settings. In the future, we plan to combine the WASM with other frameworks, such as DDFlow and RemedIoT.
 
 
