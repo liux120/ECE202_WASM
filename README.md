@@ -1,4 +1,4 @@
-# ee202
+# ECE202 WASM
 This is a course project of EE202 embedded system. The group members are Ximeng Liu and Yiru Wang.
 Project #11 Framework to Expose IoT Sensor and Actuator Services.
 
