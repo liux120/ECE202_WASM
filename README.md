@@ -31,6 +31,9 @@ The objective of this project is getting familiar with the WASM and implement WA
   * Interaction with IMU; 
   * Part of the API development.
 
+## Devices in Need
+2 Raspberry Pi
+
 ===============================================================================
 
 # Template
