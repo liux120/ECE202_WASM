@@ -43,6 +43,7 @@ Non-Web application.
 
 ## Reference
 Start-up gauide: https://webassembly.org/getting-started/developers-guide/
+
 Non-Web Embeddings: https://webassembly.org/docs/non-web/
 
 ***
