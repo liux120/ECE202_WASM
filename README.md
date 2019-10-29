@@ -34,9 +34,12 @@ The objective of this project is getting familiar with the WASM and implement WA
 ## Devices in Need
 2 Raspberry Pi
 
+## Progress
+Related work summary. [Wiki](https://github.com/liux120/ECE202_WASM/wiki)
 
-[Sites Using React](https://github.com/liux120/ECE202_WASM/wiki)
+"Hello world" on devices.
 
+***
 ===============================================================================
 
 # Template
