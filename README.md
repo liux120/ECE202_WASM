@@ -41,6 +41,10 @@ Related work summary. [Wiki](https://github.com/liux120/ECE202_WASM/wiki/Related
 
 Non-Web application.
 
+## Reference
+Start-up gauide: https://webassembly.org/getting-started/developers-guide/
+Non-Web Embeddings: https://webassembly.org/docs/non-web/
+
 ***
 ***
 # Template
