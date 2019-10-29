@@ -35,13 +35,14 @@ The objective of this project is getting familiar with the WASM and implement WA
 2 Raspberry Pi
 
 ## Progress
-Related work summary. [Wiki](https://github.com/liux120/ECE202_WASM/wiki)
+Related work summary. [Wiki](https://github.com/liux120/ECE202_WASM/wiki/Related-Work-Review)
 
 "Hello world" on devices.
 
-***
-===============================================================================
+Non-Web application.
 
+***
+***
 # Template
 ## Welcome to GitHub Pages
 
