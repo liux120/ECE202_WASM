@@ -65,6 +65,8 @@ There are two parts in the related works. The first part is the frameworks built
     **There are some Hello-World tutorials:**
 
     Running a [funcition](https://medium.com/@dai_shi/my-first-webassembly-trial-with-node-js-only-a9281641e9ed) on Raspberry Pi which is written in .WAT and compiled into .WASM with "npx wat2wasm".
+    
+    Run WASM with a [html code](https://medium.com/@BenedekGagyi/the-simplest-way-to-get-started-with-webassembly-1f92f6f90d24) gives the way to run WASM in browser.
 
 Related work summary. [Wiki](https://github.com/liux120/ECE202_WASM/wiki/Related-Work-Review)
 
