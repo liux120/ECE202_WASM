@@ -36,9 +36,33 @@ The objective of this project is getting familiar with the WASM and implement WA
 * Ubuntu
 * Windows
 
-## Progress
+## Related Work
+There are two parts in the related works. The first part is the frameworks built based on the Web Assembly (WASM) and the second part is some document regarding the concept of WASM. We will go into details in the following.
+
+1. Frameworks
+    
+    **DDFlow** is a framework built based on the **Node-Red**. It introduces a dynamic way to connect and disconnect devices in a certain working area so that an optimal computational performance is achieved. This requires timely communication between devices and thus it is built on WASM as it is considered as a faster way for transmission than JavaScript. 
+
+    **RemedIoT** is a framework concept used to remediate the conflicts in IoT framework. This is a more conceptual framework than DDFlow, since it focuses on the algorithm that solves the conflicts in a framework. This includes assigning priority to different requests and differing the levels of emergency.
+
+2. Web Assembly Documents
+    
+    **There are several developments on Web-based WASM.**
+    
+    [The official guild](https://webassembly.org/getting-started/developers-guide/) describes the fundamental usage of WASM in Windows/IOS/Linux. It talks about the Web-based WASM. However, the toolchain "emsdk" is usable on Intel but may not be on the Arm processors.
+
+    [WebAssembly Literacy](https://docs.google.com/document/d/1K8EjLSKl62s_M7ZkDfuOizdsamv2UKUwwQRF2DmIba0/edit) is a document provided by people in Mozilla. It is a handbook describing syntax about writing WASM.
+
+    [Rust](https://rustwasm.github.io/docs/book/introduction.html) is a programming language that can be complied into WASM. The setup on Raspberry Pi has some troubles but they are expected to be solved. This may also work for Web-based WASM.
+
+
+    **There are some Hello-World tutorials:**
+
+    Running a [funcition](https://medium.com/@dai_shi/my-first-webassembly-trial-with-node-js-only-a9281641e9ed) on Raspberry Pi which is written in .WAT and compiled into .WASM with "npx wat2wasm".
+
 Related work summary. [Wiki](https://github.com/liux120/ECE202_WASM/wiki/Related-Work-Review)
 
+## Progress
 #### Acomplished
 * "Hello world" on devices.
   * Generated and complied .wasm/.c/.html file using Emscripten on all of 3 devices.
