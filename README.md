@@ -21,25 +21,29 @@ The objective of this project is getting familiar with the WASM and implement WA
 
 ## Member Contribution
 * Ximeng: 
-  * WASM implementation on Windows; 
+  * WASM implementation on Windows and Raspberry Pi; 
   * Serial transmission interaction using WASM; 
   * Interaction with camera; 
   * Part of the API development.
 * Yiru: 
-  * WASM implementation on Raspberry Pi; 
+  * WASM implementation on MacOS and Linux.
   * Bit interaction using WASM; 
   * Interaction with IMU; 
   * Part of the API development.
 
-## Devices in Need
-2 Raspberry Pi
+## Devices
+* Raspberry Pi
+* Ubuntu
+* Windows
 
 ## Progress
 Related work summary. [Wiki](https://github.com/liux120/ECE202_WASM/wiki/Related-Work-Review)
 
-"Hello world" on devices.
-
-Non-Web application.
+#### Acomplished
+* "Hello world" on devices.
+  * Generated and complied .wasm/.c/.html file using Emscripten on all of 3 devices.
+#### In progress
+* Non-Web application.
 
 ## Reference
 Start-up gauide: https://webassembly.org/getting-started/developers-guide/
