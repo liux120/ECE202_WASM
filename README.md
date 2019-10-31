@@ -68,9 +68,9 @@ There are two parts in the related works. The first part is the frameworks built
     
     [Run WAST](https://gist.github.com/kanaka/3c9caf38bc4da2ecec38f41ba24b77df) is also an example on running WASM using Node.js without browser.
     
+    Another [example](http://thecodebarbarian.com/getting-started-with-webassembly-in-node.js.html) using node.js to run WASM.
+    
     Run WASM with a [html code](https://medium.com/@BenedekGagyi/the-simplest-way-to-get-started-with-webassembly-1f92f6f90d24) gives the way to run WASM in browser.
-
-Related work summary. [Wiki](https://github.com/liux120/ECE202_WASM/wiki/Related-Work-Review)
 
 ## Progress
 #### Acomplished
