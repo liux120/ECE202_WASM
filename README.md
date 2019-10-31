@@ -59,6 +59,8 @@ There are two parts in the related works. The first part is the frameworks built
 
     [WebAssembly Literacy](https://docs.google.com/document/d/1K8EjLSKl62s_M7ZkDfuOizdsamv2UKUwwQRF2DmIba0/edit) is a document provided by people in Mozilla. It is a handbook describing syntax about writing WASM.
 
+    [WebAssembly Spec](https://webassembly.github.io/spec/core/_download/WebAssembly.pdf).
+
     [Rust](https://rustwasm.github.io/docs/book/introduction.html) is a programming language that can be complied into WASM. The setup on Raspberry Pi has some troubles but they are expected to be solved. This may also work for Web-based WASM.
 
 
