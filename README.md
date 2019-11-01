@@ -63,6 +63,7 @@ There are two parts in the related works. The first part is the frameworks built
 
     [Rust](https://rustwasm.github.io/docs/book/introduction.html) is a programming language that can be complied into WASM. The setup on Raspberry Pi has some troubles but they are expected to be solved. This may also work for Web-based WASM.
 
+    [WebUSB API](https://wicg.github.io/webusb/) provides the access to USB in Web.
 
     **There are some Hello-World tutorials:**
 
