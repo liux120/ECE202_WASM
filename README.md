@@ -75,9 +75,11 @@ There are two parts in the related works. The first part is the frameworks built
     Run WASM with a [html code](https://medium.com/@BenedekGagyi/the-simplest-way-to-get-started-with-webassembly-1f92f6f90d24) gives the way to run WASM in browser.
 
 ## Progress
+
 #### Acomplished
 * "Hello world" on devices.
   * Generated and complied .wasm/.c/.html file using Emscripten on all of 3 devices.
+  
 #### In progress
 * Non-Web application.
 
