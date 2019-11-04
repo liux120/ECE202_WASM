@@ -46,10 +46,12 @@ There are two parts in the related works. The first part is the frameworks built
     **RemedIoT** is a framework concept used to remediate the conflicts in IoT framework. This is a more conceptual framework than DDFlow, since it focuses on the algorithm that solves the conflicts in a framework. This includes assigning priority to different requests and differing the levels of emergency.
 
 2. Web Assembly Documents
-    
-    **There are several developments on Web-based WASM.**
+
+    **Premium Resources**
     
     [WASM Micro Runtime](https://github.com/wyr8633/wasm-micro-runtime) is a standalone WebAssembly runtime with small footprint.
+    
+    **There are several developments on Web-based WASM.**
     
     [Mozilla Blog](https://blog.mozilla.org/blog/2017/11/13/webassembly-in-browsers/) introduces the overall idea of the WASM and provides several links.
     
