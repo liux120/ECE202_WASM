@@ -49,7 +49,7 @@ There are two parts in the related works. The first part is the frameworks built
     
     **There are several developments on Web-based WASM.**
     
-    [WASM Micro Runtime] (https://github.com/wyr8633/wasm-micro-runtime) is a standalone WebAssembly runtime with small footprint.
+    [WASM Micro Runtime](https://github.com/wyr8633/wasm-micro-runtime) is a standalone WebAssembly runtime with small footprint.
     
     [Mozilla Blog](https://blog.mozilla.org/blog/2017/11/13/webassembly-in-browsers/) introduces the overall idea of the WASM and provides several links.
     
