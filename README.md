@@ -50,6 +50,7 @@ There are two parts in the related works. The first part is the frameworks built
     **Premium Resources**
     
     [WASM Micro Runtime](https://github.com/wyr8633/wasm-micro-runtime) is a standalone WebAssembly runtime with small footprint.
+    [WASMER](https://github.com/wasmerio/wasmer) is a WebAssembly runtime with package manager.
     
     **There are several developments on Web-based WASM.**
     
