@@ -15,21 +15,19 @@ The objective of this project is getting familiar with the WASM and implement WA
 
 ## Timeline
 * Week 4-5: Get familiar with WASM and make it run on IoT devices
-* Week 5-6: Implement simple sensors and actuators (Buttons, Serial Ports, and etc.) on the devices and the interface using WASM
-* Week 6-8: Further develop the interface with WASM on complex prepherals (IMU, cameras).
-* Week 8-10: Develop an API for general devices. 
+* Week 5-6: Install and test WASM runtime enviroments.
+* Week 6-8: Compile and basic functions using WASM.
+* Week 8-10: Test .wasm files on various WASM runtimes. 
 
 ## Member Contribution
 * Ximeng: 
   * WASM implementation on Windows and Raspberry Pi; 
-  * Serial transmission interaction using WASM; 
-  * Interaction with camera; 
-  * Part of the API development.
+  * Write, complie programs and translate in to .wasm.
+  * Test .wasm files on WASM runtimes.
 * Yiru: 
-  * WASM implementation on MacOS and Linux.
-  * Bit interaction using WASM; 
-  * Interaction with IMU; 
-  * Part of the API development.
+  * WASM implementation on macOS & Linux.
+  * Build WASM runtime enviroments on macOS & Linux.
+  * Test .wasm files on WASM runtimes.
 
 ## Devices
 * Raspberry Pi
@@ -51,7 +49,11 @@ There are two parts in the related works. The first part is the frameworks built
     
     [WASM Micro Runtime](https://github.com/wyr8633/wasm-micro-runtime) is a standalone WebAssembly runtime with small footprint.
     
-    [WASMER](https://github.com/wasmerio/wasmer) is a WebAssembly runtime with package manager.
+    [Wasmer](https://github.com/wasmerio/wasmer) is a WebAssembly runtime with package manager.
+    
+    [Wasmo](https://github.com/appcypher/wasmo)
+    
+    [Wasmtime](https://github.com/bytecodealliance/wasmtime)
     
     **There are several developments on Web-based WASM.**
     
@@ -86,10 +88,13 @@ There are two parts in the related works. The first part is the frameworks built
 #### Acomplished
 * "Hello world" on devices.
   * Generated and complied .wasm/.c/.html file using Emscripten on all of 3 devices.
+  * Wasmer sucessully installed, able to run simple .wasm file.
+  * Wasmtime sucessully installed, able to run simple .wasm file.
   
 #### In progress
-* Non-Web application.
-* Modifying WebAssembly Micro Runtime on Linux.
+* Wasmo
+* WebAssembly Micro Runtime
+* .wasm programs
 
 ## Reference
 Start-up gauide: https://webassembly.org/getting-started/developers-guide/
