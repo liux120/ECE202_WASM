@@ -90,8 +90,11 @@ There are two parts in the related works. The first part is the frameworks built
 * Wasmtime sucessully installed, able to run simple .wasm file.
   
 #### In progress
-* Wasmo: fixed the ERROR:note: "cc" "-m64" "-L" https://github.com/rust-lang/rust/issues/60149
-* WebAssembly Micro Runtime: ERROR:Load import section failed: resolve import function (wasi_unstable, fd_prestat_get) failed.
+* Wasmo: 
+  * Fixed ERROR:note: "cc" "-m64" "-L" https://github.com/rust-lang/rust/issues/60149
+  * Fail to run .wasm file: ERROR: dyld: Symbol not found: _ffi_type_double
+* WebAssembly Micro Runtime: 
+  * ERROR:Load import section failed: resolve import function (wasi_unstable, fd_prestat_get) failed.
 * .wasm programs
 
 ## Reference
