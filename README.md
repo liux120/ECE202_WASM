@@ -67,8 +67,6 @@ There are two parts in the related works. The first part is the frameworks built
 
     [WebAssembly Literacy](https://docs.google.com/document/d/1K8EjLSKl62s_M7ZkDfuOizdsamv2UKUwwQRF2DmIba0/edit) is a document provided by people in Mozilla. It is a handbook describing syntax about writing WASM.
 
-    [WebAssembly Spec](https://webassembly.github.io/spec/core/_download/WebAssembly.pdf).
-
     [Rust](https://rustwasm.github.io/docs/book/introduction.html) is a programming language that can be complied into WASM. The setup on Raspberry Pi has some troubles but they are expected to be solved. This may also work for Web-based WASM.
 
     [WebUSB API](https://wicg.github.io/webusb/) provides the access to USB in Web.
@@ -87,9 +85,9 @@ There are two parts in the related works. The first part is the frameworks built
 
 #### Acomplished
 * "Hello world" on devices.
-  * Generated and complied .wasm/.c/.html file using Emscripten on all of 3 devices.
-  * Wasmer sucessully installed, able to run simple .wasm file.
-  * Wasmtime sucessully installed, able to run simple .wasm file.
+* Generated and complied .wasm/.c/.html file using Emscripten on all of 3 devices.
+* Wasmer sucessully installed, able to run simple .wasm file.
+* Wasmtime sucessully installed, able to run simple .wasm file.
   
 #### In progress
 * Wasmo
