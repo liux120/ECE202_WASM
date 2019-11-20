@@ -90,7 +90,7 @@ There are two parts in the related works. The first part is the frameworks built
 * Wasmtime sucessully installed, able to run simple .wasm file.
   
 #### In progress
-* Wasmo
+* Wasmo: fixed the error:note: "cc" "-m64" "-L" https://github.com/rust-lang/rust/issues/60149
 * WebAssembly Micro Runtime
 * .wasm programs
 
