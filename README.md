@@ -97,12 +97,18 @@ There are two parts in the related works. The first part is the frameworks built
 * Wasmtime sucessully installed, able to run simple .wasm file.
   
 #### In progress
+* .wasm programs
+* Compile different functions into Wasm and test.
+* Run the Wasm with node.js with the help of javascript.
+
+#### Failure
 * Wasmo: 
   * Fixed ERROR:note: "cc" "-m64" "-L" https://github.com/rust-lang/rust/issues/60149
   * Fail to run .wasm file: ERROR: dyld: Symbol not found: _ffi_type_double
 * WebAssembly Micro Runtime: 
   * ERROR:Load import section failed: resolve import function (wasi_unstable, fd_prestat_get) failed.
-* .wasm programs
+* Runtime Wasmer and Wasmtime cannot be installed to the Rasp Pi 3+ due to arm7l architecture.
+
 
 ## Reference
 Start-up gauide: https://webassembly.org/getting-started/developers-guide/
