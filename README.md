@@ -55,7 +55,12 @@ There are two parts in the related works. The first part is the frameworks built
     
     [Wasmtime](https://github.com/bytecodealliance/wasmtime)
     
+    
     **There are several developments on Web-based WASM.**
+    
+    [WASI](https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/) official wasm interface
+    
+    [Node.js](https://www.joyent.com/blog/improved-wasm-support-coming-to-node) support for wasm
     
     [Mozilla Blog](https://blog.mozilla.org/blog/2017/11/13/webassembly-in-browsers/) introduces the overall idea of the WASM and provides several links.
     
