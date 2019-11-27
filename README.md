@@ -99,7 +99,8 @@ There are two parts in the related works. The first part is the frameworks built
 #### In progress
 * .wasm programs
 * Compile different functions into Wasm and test.
-* Run the Wasm with node.js with the help of javascript.
+* Run Wasm with node.js with the help of javascript.
+* Run Wasm directly in node.js
 
 #### Failure
 * Wasmo: 
