@@ -3,12 +3,19 @@ This is a course project of EE202 embedded system. The group members are Ximeng 
 Project #11 Framework to Expose IoT Sensor and Actuator Services.
 
 ## Abstract  
-WebAssembly, also know as WASM, is a binary instruction format for a stack-based virtual machine. WASM is orignally designed for compilation of high-level languages and deployed on the Web for client and server applications. It is able to run large, complex applications on the web and brings predicatble performance to the web platform. Nowdays, developers are starting to push WebAssembly beyond the browser, since it provides a fast, scalable, and secure way to run the same code across all machines. In this project, members implemented WASM with and without broweser on Raspberry Pi (**Model**) and laptops (Windows, Linux, MacOS). Members also tested various WASM under heterogeneous settings. The rest of this report is constructed as follows: Section I, prociding basic introduction and theoretical backgrounds of WASM; Section II, introducing test environment; Section III, Analyzing; Section IV, future and conclusion.
+WebAssembly, also know as WASM, is a binary instruction format for a stack-based virtual machine. WebAssembly is originally designed for the compilation of high-level languages and deployed on the Web for client and server applications. It can run large, complex applications on the web and brings predictable performance to the web platform. Nowadays, developers are starting to push WebAssembly beyond the browser, since it provides a fast, scalable, and secure way to run the same code across all machines. In this project, members implemented WASM with and without the browser on Raspberry Pi (**Model**) and laptops (Windows, Linux, macOS). Members also tested various WASM under heterogeneous settings. The rest of this report is constructed as follows: Section I, providing basic introduction and theoretical backgrounds of WebAssembly; Section II, introducing test environment; Section III, Analyzing; Section IV, future and conclusion.
 
-## Intruduction
-The objective of this project is getting familiar with the WASM and implementing WASM in the general embedded devices under distributed and heterogeneous settings. To achieve the goal, members plan to first run WASM without the browser on a Raspberry Pi or personal laptops. Then, members will implement the WASM with actuators, such as sensors and cameras. Communication network using the WASM framework tend to be accomplished at this stage. Finally, the WASM framework will be generalized so that the WASM can be run in distributed and heterogeneous settings. In the future, we plan to combine the WASM with other frameworks, such as DDFlow and RemedIoT.
+## I. Intruduction
+Designed by W3C Community Group, WebAssembly is a new web compilation method which can be encoded in a size/load-time-efficient binary format, aming to execute at native speed by taking advantage of common hardware capabilities available on wide range of platforms. WebAssembly is initially designed to run on the Web, though the non-web embeddings of WebAssembly are also desirable for executing well in other environments, such as minimal testing shells and advanced application environments. 
+Since the very first WebAssembly just appeared in March 2017, there are only a few non-browsor implantation has been made. A plug-and-play WebAssembly-Orientated software or hardware is not available either. Most of the existing WebAssembly platforms are developed in highly customized settings with minor overlapping with each other. (More detail on WASM runtime). Briefly, the objective of this project is to construct a preliminary result on characterizing the implentation of the WebAssembly runtimes on different platforms(ARMs,x86). The result is drawn from the comparison of distinct runtimes crossmatching with different compilers and coding languages. In the future, a standardized WebAssembly runtime can implement with actuators, such as sensors and cameras. A framework combined with DDFlow and RemedIot may tend to be accomplished. (A demonstration of future application may be present).
 
-*NOTE: DDFlow a macroprogramming abstraction and accompanying runtime that provides an efficient means to program high-quality distributed applications that span a diverse and dynamic IoTnetwork. RemedIoT is a remedial action framework for resolving Internet-of-Things conflicts.*
+## II. Non-Web Environments
+**Emscripten**
+
+**JavaScript VMs (node.js)**
+
+**WASI**
+The WebAssembly is considered as an assembly lanaguage for a comceptual machine and has the capibility of runing across all different OSs. A system interface, therefore, is necessary for a conceptual operating system. In this project, members used WebAssembly System Interface (WASI), a system interface for the WebAssembly platform.
 
 ## Prospective Result
 1. Make the non-browser WASM work on the Intel/ARM based processers and display "Hello World."
@@ -43,6 +50,8 @@ There are two parts in the related works. The first part is the frameworks built
 1. Frameworks
     
     **DDFlow** is a framework built based on the **Node-Red**. It introduces a dynamic way to connect and disconnect devices in a certain working area so that an optimal computational performance is achieved. This requires timely communication between devices and thus it is built on WASM as it is considered as a faster way for transmission than JavaScript. 
+    
+    *NOTE: DDFlow a macroprogramming abstraction and accompanying runtime that provides an efficient means to program high-quality distributed applications that span a diverse and dynamic IoTnetwork. RemedIoT is a remedial action framework for resolving Internet-of-Things conflicts.*
 
     **RemedIoT** is a framework concept used to remediate the conflicts in IoT framework. This is a more conceptual framework than DDFlow, since it focuses on the algorithm that solves the conflicts in a framework. This includes assigning priority to different requests and differing the levels of emergency.
 
