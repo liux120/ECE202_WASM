@@ -34,6 +34,11 @@ Host APIs | Emscripten | N/A | WASI | N/A | N/A | N/A |
 Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
 
 ## III. Analysis Results
+### WAMR
+
+### Wasmer
+
+### Wasmtime
 
 ## Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
