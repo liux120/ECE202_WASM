@@ -61,7 +61,7 @@ To build the wasmtime, we first need to `git pull` their source files and then b
 #### Directly writing Wat
 Since the compilers cannot work on the Arm7L architectures, we tried to write WabAssembly code by ourselves. Though it is almost impossible to directly write `.wasm` code due to its binary format, we can write `.wat` code which is somewhat similar to the Assembly code. It can be translated into `.wasm` by a simple function `wat2wasm` provided Node.js. We followed the [WebAssembly Literacy](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and tried the fundamental functions with the help of `Node.js`. The `.wasm` programs are successfully run and the demos are in [jsRun](https://github.com/liux120/ECE202_WASM/tree/master/jsRun). We succeeded in fundamental arithmetics, loop, condition, arrays, and recursion. However, due to the limitation of the JavaScript runtime, we failed to access the global memory which means we are not able to read registers or sensors so far.
 
-## Reference
+## V. Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
 2. Non-Web Embeddings: https://webassembly.org/docs/non-web/
 3. Mozilla Blog: https://blog.mozilla.org/blog/2017/11/13/webassembly-in-browsers/
