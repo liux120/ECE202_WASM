@@ -65,6 +65,12 @@ After all, we haved tried to generate `.wasm` file from C and Rust, but we faile
 4. Node.js: https://en.wikipedia.org/wiki/Node.js
 5. Emscripten SDK: https://emscripten.org/docs/getting_started/downloads.html
 
+## Related Work
+1. WebAssembly Micro Runtime (WAMR): https://github.com/bytecodealliance/wasm-micro-runtime
+2. Wasmer: https://github.com/wasmerio/wasmer
+3. Wasmo: https://github.com/appcypher/wasmo
+4. Wasmtime: https://github.com/bytecodealliance/wasmtime
+    
 # Updates for course purpose
 ## Prospective Result
 1. Make the non-browser WASM work on the Intel/ARM based processers and display "Hello World."
@@ -93,7 +99,7 @@ After all, we haved tried to generate `.wasm` file from C and Rust, but we faile
 * Ubuntu
 * Windows
 
-## Related Work
+## Future Related Work
 There are two parts in the related works. The first part is the frameworks built based on the Web Assembly (WASM) and the second part is some document regarding the concept of WASM. We will go into details in the following.
 
 1. Frameworks
@@ -106,17 +112,6 @@ There are two parts in the related works. The first part is the frameworks built
 
 2. Web Assembly Documents
 
-    **Premium Resources**
-    
-    [WASM Micro Runtime](https://github.com/wyr8633/wasm-micro-runtime) is a standalone WebAssembly runtime with small footprint.
-    
-    [Wasmer](https://github.com/wasmerio/wasmer) is a WebAssembly runtime with package manager.
-    
-    [Wasmo](https://github.com/appcypher/wasmo)
-    
-    [Wasmtime](https://github.com/bytecodealliance/wasmtime)
-    
-    
     **There are several developments on Web-based WASM.**
     
     [WASI](https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/) official wasm interface
