@@ -35,16 +35,36 @@ Host APIs | Emscripten | N/A | WASI | N/A | N/A | N/A |
 Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
 
 ## III. Analysis Results
-### WAMR
+### Intel x86 (Mac and Windows systems)
+#### WAMR
 
-### Wasmer
+#### Wasmer
 
-### Wasmtime
+#### Wasmtime
+
+### Arm7L (Raspberry Pi B+)
+#### Compilers
+We tested the compilers Emscripten and Rust. Emscripten SDK is an official toolkit to generate `.wasm` from C/C++. However, it is not well-delevoped and have failed to be installed onto the Arm7L devices. We followed the instruction `./emsdk install latest` and get the error: `Error: 'sdk-releases-upstream-b024b71038d1291ed7ec23ecd553bf2c0c8d6da6-64bit' is only provided for 64-bit OSes.` Since Arm7L uses 32-bit instruction set, it is not possible to install the Emscripten compiler onto the Raspberry Pi B+. However, since the Arm8 is a 64-bit processer, it may be able to run the SDK.
+ 
+Besides, we also tested the Rust compiler since it has a build-in compiler for WebAssembly. We follow the [tutorial](https://github.com/bytecodealliance/wasmtime/blob/master/docs/WASI-tutorial.md) in the Wasmtime and when we try to build the project by `cargo build --target wasm32-wasi`, we have the error `error: linker `rust-lld` not found`, which is an unsolved issue within the Rust compiler.
+
+After all, we haved tried to generate `.wasm` file from C and Rust, but we failed for both. The main issue here is that the compilers work for particular processers' architectures and the Arm7L is not yet included in their development. Thus, if we want to use these compilers, we may need to wait until they are further developed.
+
+#### WAMR
+
+#### Wasmer
+
+#### Wasmtime
+
+#### Directly writing Wat
 
 ## Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
 2. Non-Web Embeddings: https://webassembly.org/docs/non-web/
 3. Mozilla Blog: https://blog.mozilla.org/blog/2017/11/13/webassembly-in-browsers/
+4. Node.js: https://en.wikipedia.org/wiki/Node.js
+5. Emscripten SDK: https://emscripten.org/docs/getting_started/downloads.html
+
 # Updates for course purpose
 ## Prospective Result
 1. Make the non-browser WASM work on the Intel/ARM based processers and display "Hello World."
