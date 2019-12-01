@@ -51,12 +51,16 @@ Besides, we also tested the Rust compiler since it has a build-in compiler for W
 After all, we haved tried to generate `.wasm` file from C and Rust, but we failed for both. The main issue here is that the compilers work for particular processers' architectures and the Arm7L is not yet included in their development. Thus, if we want to use these compilers, we may need to wait until they are further developed.
 
 #### WAMR
+Due to the different processer's architecture, the WAMR cannot run properly in the Raspberry Pi B+. When we try to build the runtime, there are several problems showing up.
+`make[2]: *** [CMakeFiles/vmlib.dir/build.make:63: CMakeFiles/vmlib.dir/home/pi/runTime/wasm-micro-runtime/core/iwasm/runtime/platform/linux/wasm_native.c.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:110: CMakeFiles/vmlib.dir/all] Error 2
+make: *** [Makefile:130: all] Error 2`
 
 #### Wasmer
 Wasmer provides runtime for Intel processers but not for the Arm7L. As we tried to install the runtime by `curl https://get.wasmer.io -sSfL | sh`, we have the error: `The system architecture (armv7l) is not supported by this installation script.`. It is said to be further developed for IoT devices, so the arm architectures may be available in their future version.
 
 #### Wasmtime
-To build the wasmtime, we first need to `git pull` their source files and then build their rust program by `cargo build --release`. 
+To build the wasmtime, we first need to `git pull` their source files and then build their rust program by `cargo build --release`. Similar to Wasmer, the build failed with error: `error: could not compile wasi-common`. Besides, it has issue with some other packages, like `unicode-xid`, `libc`, `proc-macro2` and `cc`. Although we do not know the exact reason for the error, but it seems to be the issue of its 32-bits instruction set.
 
 #### Directly writing Wat
 Since the compilers cannot work on the Arm7L architectures, we tried to write WabAssembly code by ourselves. Though it is almost impossible to directly write `.wasm` code due to its binary format, we can write `.wat` code which is somewhat similar to the Assembly code. It can be translated into `.wasm` by a simple function `wat2wasm` provided Node.js. We followed the [WebAssembly Literacy](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and tried the fundamental functions with the help of `Node.js`. The `.wasm` programs are successfully run and the demos are in [jsRun](https://github.com/liux120/ECE202_WASM/tree/master/jsRun). We succeeded in fundamental arithmetics, loop, condition, arrays, and recursion. However, due to the limitation of the JavaScript runtime, we failed to access the global memory which means we are not able to read registers or sensors so far.
