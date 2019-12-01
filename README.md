@@ -46,17 +46,20 @@ Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
 #### Compilers
 We tested the compilers Emscripten and Rust. Emscripten SDK is an official toolkit to generate `.wasm` from C/C++. However, it is not well-delevoped and have failed to be installed onto the Arm7L devices. We followed the instruction `./emsdk install latest` and get the error: `Error: 'sdk-releases-upstream-b024b71038d1291ed7ec23ecd553bf2c0c8d6da6-64bit' is only provided for 64-bit OSes.` Since Arm7L uses 32-bit instruction set, it is not possible to install the Emscripten compiler onto the Raspberry Pi B+. However, since the Arm8 is a 64-bit processer, it may be able to run the SDK.
  
-Besides, we also tested the Rust compiler since it has a build-in compiler for WebAssembly. We follow the [tutorial](https://github.com/bytecodealliance/wasmtime/blob/master/docs/WASI-tutorial.md) in the Wasmtime and when we try to build the project by `cargo build --target wasm32-wasi`, we have the error `error: linker `rust-lld` not found`, which is an unsolved issue within the Rust compiler.
+Besides, we also tested the Rust compiler since it has a build-in compiler for WebAssembly. We follow the [tutorial](https://github.com/bytecodealliance/wasmtime/blob/master/docs/WASI-tutorial.md) in the Wasmtime and when we try to build the project by `cargo build --target wasm32-wasi`, we have the error `error: linker rust-lld not found`, which is an unsolved issue within the Rust compiler.
 
 After all, we haved tried to generate `.wasm` file from C and Rust, but we failed for both. The main issue here is that the compilers work for particular processers' architectures and the Arm7L is not yet included in their development. Thus, if we want to use these compilers, we may need to wait until they are further developed.
 
 #### WAMR
 
 #### Wasmer
+Wasmer provides runtime for Intel processers but not for the Arm7L. As we tried to install the runtime by `curl https://get.wasmer.io -sSfL | sh`, we have the error: `The system architecture (armv7l) is not supported by this installation script.`. It is said to be further developed for IoT devices, so the arm architectures may be available in their future version.
 
 #### Wasmtime
+To build the wasmtime, we first need to `git pull` their source files and then build their rust program by `cargo build --release`. 
 
 #### Directly writing Wat
+Since the compilers cannot work on the Arm7L architectures, we tried to write WabAssembly code by ourselves. Though it is almost impossible to directly write `.wasm` code due to its binary format, we can write `.wat` code which is somewhat similar to the Assembly code. It can be translated into `.wasm` by a simple function `wat2wasm` provided Node.js. We followed the [WebAssembly Literacy](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and tried the fundamental functions with the help of `Node.js`. The `.wasm` programs are successfully run and the demos are in [jsRun](https://github.com/liux120/ECE202_WASM/tree/master/jsRun). We succeeded in fundamental arithmetics, loop, condition, arrays, and recursion. However, due to the limitation of the JavaScript runtime, we failed to access the global memory which means we are not able to read registers or sensors so far.
 
 ## Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
@@ -65,12 +68,6 @@ After all, we haved tried to generate `.wasm` file from C and Rust, but we faile
 4. Node.js: https://en.wikipedia.org/wiki/Node.js
 5. Emscripten SDK: https://emscripten.org/docs/getting_started/downloads.html
 
-## Related Work
-1. WebAssembly Micro Runtime (WAMR): https://github.com/bytecodealliance/wasm-micro-runtime
-2. Wasmer: https://github.com/wasmerio/wasmer
-3. Wasmo: https://github.com/appcypher/wasmo
-4. Wasmtime: https://github.com/bytecodealliance/wasmtime
-    
 # Updates for course purpose
 ## Prospective Result
 1. Make the non-browser WASM work on the Intel/ARM based processers and display "Hello World."
@@ -99,7 +96,7 @@ After all, we haved tried to generate `.wasm` file from C and Rust, but we faile
 * Ubuntu
 * Windows
 
-## Future Related Work
+## Related Work
 There are two parts in the related works. The first part is the frameworks built based on the Web Assembly (WASM) and the second part is some document regarding the concept of WASM. We will go into details in the following.
 
 1. Frameworks
@@ -112,6 +109,17 @@ There are two parts in the related works. The first part is the frameworks built
 
 2. Web Assembly Documents
 
+    **Premium Resources**
+    
+    [WASM Micro Runtime](https://github.com/wyr8633/wasm-micro-runtime) is a standalone WebAssembly runtime with small footprint.
+    
+    [Wasmer](https://github.com/wasmerio/wasmer) is a WebAssembly runtime with package manager.
+    
+    [Wasmo](https://github.com/appcypher/wasmo)
+    
+    [Wasmtime](https://github.com/bytecodealliance/wasmtime)
+    
+    
     **There are several developments on Web-based WASM.**
     
     [WASI](https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/) official wasm interface
