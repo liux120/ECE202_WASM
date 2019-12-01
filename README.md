@@ -11,6 +11,8 @@ Since the very first WebAssembly just appeared in March 2017, there are only a f
 
 ## II. Non-Web Environments
 The WebAssembly requires additional tools in order to function in the non-web environments. In this project, members explored folowing tools in the order as listed. (expend)
+### LLVM
+The LLVM project is a collection of modular and reusable compiler and toochain technologies. It is the compiler toolchain that currently has the most support for the WebAssembly. The LLVM Core libraries are built around the LLVM intermediate representaion (LLVM IR), which translates high-level programing language (C, C++, Rust) into WebAssembly code. Clang
 
 ### Emscripten
 Emscripten Toolchain is the first tool for producing WebAssembly, which emulates a particular OS system interface on the web. It allows developers using functions from the C standard libnrary(libc). Emscipten SDK is required to specify setting of tools including Emscripten Compiler Frontend (emcc). Emcc is a drop-in replacement for a standard compiler like gcc. Emcc uses Clang and LLVM to compile to wasm or `asm.js`, producing JavaScript which can run the compiled code and provide the necessary runtime support. This JavaScript can be executed by `node.js` or form within HTML in a browser. When using emcc to build to WebAssembly, the output contains both `.wasm` and `.js` file. Both of two files are required to work together as most WebAssembly currently depends on a JavaScript runtime. The `.js` file loads and sets up imports/exports for WebAssembly code. In this case, the `.wasm` is not standalone, meaning it cannot be easily configuried and excuted withour `.js` code. In this project, trying to avoid JS runtime, memebrs extracted a standalone `.wasm` file from `$ emcc source.c -s STANDALONE_WASM` and `$ emcc source.c -o output.wasm` (requires LLVM wasm backend). The standalone `.wasm` file is used for other runtimes such as Wasmer and wasmtime, which will be discussed later.
@@ -21,9 +23,9 @@ Emscripten Toolchain is the first tool for producing WebAssembly, which emulates
 The WebAssembly is considered as an assembly lanaguage for a comceptual machine and has the capibility of runing across all different OSs. A system interface, therefore, is necessary for a conceptual operating system. In this project, members used WebAssembly System Interface (WASI), a system interface for the WebAssembly platform.
 
 ## Reference
-1. Start-up gauide: https://webassembly.org/getting-started/developers-guide/
+1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
 2. Non-Web Embeddings: https://webassembly.org/docs/non-web/
-
+3. Mozilla Blog: https://blog.mozilla.org/blog/2017/11/13/webassembly-in-browsers/
 # Updates for course purpose
 ## Prospective Result
 1. Make the non-browser WASM work on the Intel/ARM based processers and display "Hello World."
@@ -83,8 +85,6 @@ There are two parts in the related works. The first part is the frameworks built
     [Node.js](https://www.joyent.com/blog/improved-wasm-support-coming-to-node) support for wasm
     
     [Rust Wasm](https://github.com/rustwasm/wasm-pack) compile rust to wasm, and make it run by node.js
-    
-    [Mozilla Blog](https://blog.mozilla.org/blog/2017/11/13/webassembly-in-browsers/) introduces the overall idea of the WASM and provides several links.
     
     [Understanding WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) is a tutorial on how to write a program in WASM.
     
