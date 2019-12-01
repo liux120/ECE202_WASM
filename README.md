@@ -3,18 +3,21 @@ This is a course project of EE202 embedded system. The group members are Ximeng 
 Project #11 Framework to Expose IoT Sensor and Actuator Services.
 
 ## Abstract  
-WebAssembly, also know as WASM, is a binary instruction format for a stack-based virtual machine. WebAssembly is originally designed for the compilation of high-level languages and deployed on the Web for client and server applications. It can run large, complex applications on the web and brings predictable performance to the web platform. Nowadays, developers are starting to push WebAssembly beyond the browser, since it provides a fast, scalable, and secure way to run the same code across all machines. In this project, members implemented WASM with and without the browser on Raspberry Pi (**Model**) and laptops (Windows, Linux, macOS). Members also tested various WASM under heterogeneous settings. The rest of this report is constructed as follows: Section I, providing basic introduction and theoretical backgrounds of WebAssembly; Section II, introducing test environment; Section III, Analyzing; Section IV, future and conclusion.
+WebAssembly, also know as Wasm, is a binary instruction format for a stack-based virtual machine. WebAssembly is originally designed for the compilation of high-level languages and deployed on the Web for client and server applications. It can run large, complex applications on the web and brings predictable performance to the web platform. Nowadays, developers are starting to push WebAssembly beyond the browser, since it provides a fast, scalable, and secure way to run the same code across all machines. In this project, members implemented WASM with and without the browser on Raspberry Pi (model) and laptops (Windows, Linux, macOS). Members also tested various WASM under heterogeneous settings. The rest of this report is constructed as follows: Section I, providing basic introduction and theoretical backgrounds of WebAssembly; Section II, introducing test environment; Section III, Analyzing; Section IV, future and conclusion.
 
 ## I. Intruduction
 Designed by W3C Community Group, WebAssembly is a new web compilation method which can be encoded in a size/load-time-efficient binary format, aming to execute at native speed by taking advantage of common hardware capabilities available on wide range of platforms. WebAssembly is initially designed to run on the Web, though the non-web embeddings of WebAssembly are also desirable for executing well in other environments, such as minimal testing shells and advanced application environments. 
 Since the very first WebAssembly just appeared in March 2017, there are only a few non-browsor implantation has been made. A plug-and-play WebAssembly-Orientated software or hardware is not available either. Most of the existing WebAssembly platforms are developed in highly customized settings with minor overlapping with each other. (More detail on WASM runtime). Briefly, the objective of this project is to construct a preliminary result on characterizing the implentation of the WebAssembly runtimes on different platforms(ARMs,x86). The result is drawn from the comparison of distinct runtimes crossmatching with different compilers and coding languages. In the future, a standardized WebAssembly runtime can implement with actuators, such as sensors and cameras. A framework combined with DDFlow and RemedIot may tend to be accomplished. (A demonstration of future application may be present).
 
 ## II. Non-Web Environments
-**Emscripten**
+The WebAssembly requires additional tools in order to function in the non-web environments. In this project, members explored folowing tools in the order as listed. (expend)
 
-**JavaScript VMs (node.js)**
+### Emscripten
+Emscripten Toolchain is the first tool for producing WebAssembly, which emulates a particular OS system interface on the web. It allows developers using functions from the C standard libnrary(libc). Emscipten SDK is required to specify setting of tools including Emscripten Compiler Frontend (emcc). Emcc is a drop-in replacement for a standard compiler like gcc. Emcc uses Clang and LLVM to compile to wasm or `asm.js`, producing JavaScript which can run the compiled code and provide the necessary runtime support. This JavaScript can be executed by `node.js` or form within HTML in a browser. When using emcc to build to WebAssembly, the output contains both `.wasm` and `.js` file. Both of two files are required to work together as most WebAssembly currently depends on a JavaScript runtime. The `.js` file loads and sets up imports/exports for WebAssembly code. In this case, the `.wasm` is not standalone, meaning it cannot be easily configuried and excuted withour `.js` code. In this project, trying to avoid JS runtime, memebrs extracted a standalone `.wasm` file from `$ emcc source.c -s STANDALONE_WASM` and `$ emcc source.c -o output.wasm` (requires LLVM wasm backend). The standalone `.wasm` file is used for other runtimes such as Wasmer and wasmtime, which will be discussed later.
 
-**WASI**
+### JavaScript VMs (node.js)
+
+### WASI
 The WebAssembly is considered as an assembly lanaguage for a comceptual machine and has the capibility of runing across all different OSs. A system interface, therefore, is necessary for a conceptual operating system. In this project, members used WebAssembly System Interface (WASI), a system interface for the WebAssembly platform.
 
 ## Prospective Result
@@ -34,7 +37,7 @@ The WebAssembly is considered as an assembly lanaguage for a comceptual machine 
   * WASM implementation on Windows and Raspberry Pi; 
   * Write, complie programs and translate in to .wasm.
   * Test .wasm files on WASM runtimes.
-* Yiru: 
+* Yiru:  
   * WASM implementation on macOS & Linux.
   * Build WASM runtime enviroments on macOS & Linux.
   * Test .wasm files on WASM runtimes.
