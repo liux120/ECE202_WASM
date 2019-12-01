@@ -20,6 +20,10 @@ Emscripten Toolchain is the first tool for producing WebAssembly, which emulates
 ### WASI
 The WebAssembly is considered as an assembly lanaguage for a comceptual machine and has the capibility of runing across all different OSs. A system interface, therefore, is necessary for a conceptual operating system. In this project, members used WebAssembly System Interface (WASI), a system interface for the WebAssembly platform.
 
+## Reference
+1. Start-up gauide: https://webassembly.org/getting-started/developers-guide/
+2. Non-Web Embeddings: https://webassembly.org/docs/non-web/
+
 # Updates for course purpose
 ## Prospective Result
 1. Make the non-browser WASM work on the Intel/ARM based processers and display "Hello World."
@@ -125,12 +129,6 @@ There are two parts in the related works. The first part is the frameworks built
 * WebAssembly Micro Runtime: 
   * ERROR:Load import section failed: resolve import function (wasi_unstable, fd_prestat_get) failed.
 * Runtime Wasmer and Wasmtime cannot be installed to the Rasp Pi 3+ due to arm7l architecture.
-
-
-## Reference
-Start-up gauide: https://webassembly.org/getting-started/developers-guide/
-
-Non-Web Embeddings: https://webassembly.org/docs/non-web/
 
 ***
 ***
