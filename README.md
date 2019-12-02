@@ -109,9 +109,9 @@ Wasmer is able to be build on both Mac and PC. It supports `cowsay.wasm` file.
   * Test `.wasm` files on WASM runtimes.
 
 ## Devices
-* Raspberry Pi
-* Ubuntu
-* Windows
+* Raspberry Pi, B+
+* Windows/Ubuntu, dual-OS PC with intel i7-7700k processor.
+* Macbook pro 15", x86-darwin.
 
 ## Related Work
 There are two parts in the related works. The first part is the frameworks built based on the Web Assembly (WASM) and the second part is some document regarding the concept of WASM. We will go into details in the following.
