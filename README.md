@@ -34,13 +34,18 @@ Compiler | Carnelift, Dynasm.rs, LLVM| Custom | Carnelift | LLVM | LLVM | Custom
 Host APIs | Emscripten | N/A | WASI | N/A | N/A | N/A |
 Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
 
-## III. Analysis Results
-### Intel x86 (Mac and Windows systems)
-#### WAMR
+#### WebAssembly Micro Runtime (WAMR)
+[WAMR](https://github.com/bytecodealliance/wasm-micro-runtime) is a small footprint standalone WebAssembly runtime which includes a WebAssembly VMcore (iwasm), a supporting API, and a application dynamic management mechanism. It is the first runtime explored by members.
 
 #### Wasmer
+[Wasmer](https://github.com/wasmerio/wasmer) is a non-browser standalone WebAssembly runtime which supports WASI and Emscripten. It can be implemented in x86 and ARM devices, embedded in various languages (Rust, C/C++,, Python, Go, Ruby, etc). It is the most comperhensive runtime been explored by members so far.
 
-#### Wasmtime
+## Wasmtime
+[Wasmtime](https://github.com/bytecodealliance/wasmtime), developed by moz://a group, is a standalone wasm-only optimizing runtime specificly for WebAssembly and WASI, which can be used as a command-line utiltiy and a library embedded in a larger application. It supports Rust, C/C++.
+
+## III. Analysis Results
+### Cowsay.wasm
+In this project, members used a preexisted WebAssembly program called [Cowsay](https://wapm.io/package/cowsay) to verify the implementation of each runtimes. `cowsay.wasm` generates ASCII pictures of an animal with a message, both of which are defined specificly by users. Since `cowsay.wasm` is originally from Rust implementation, it is assumed to be optimized and bug-free in Rust-based runtime.
 
 ### Arm7L (Raspberry Pi B+)
 #### Compilers
@@ -60,10 +65,18 @@ make: *** [Makefile:130: all] Error 2`
 Wasmer provides runtime for Intel processers but not for the Arm7L. As we tried to install the runtime by `curl https://get.wasmer.io -sSfL | sh`, we have the error: `The system architecture (armv7l) is not supported by this installation script.`. It is said to be further developed for IoT devices, so the arm architectures may be available in their future version.
 
 #### Wasmtime
-To build the wasmtime, we first need to `git pull` their source files and then build their rust program by `cargo build --release`. Similar to Wasmer, the build failed with error: `error: could not compile wasi-common`. Besides, it has issue with some other packages, like `unicode-xid`, `libc`, `proc-macro2` and `cc`. Although we do not know the exact reason for the error, but it seems to be the issue of its 32-bits instruction set.
+To build the wasmtime, members first need to `git pull` their source files and then build their rust program by `cargo build --release`. Similar to Wasmer, the build failed with error: `error: could not compile wasi-common`. Besides, it has issue with some other packages, like `unicode-xid`, `libc`, `proc-macro2` and `cc`. Although we do not know the exact reason for the error, but it seems to be the issue of its 32-bits instruction set.
 
 #### Directly writing Wat
 Since the compilers cannot work on the Arm7L architectures, we tried to write WabAssembly code by ourselves. Though it is almost impossible to directly write `.wasm` code due to its binary format, we can write `.wat` code which is somewhat similar to the Assembly code. It can be translated into `.wasm` by a simple function `wat2wasm` provided Node.js. We followed the [WebAssembly Literacy](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and tried the fundamental functions with the help of `Node.js`. The `.wasm` programs are successfully run and the demos are in [jsRun](https://github.com/liux120/ECE202_WASM/tree/master/jsRun). We succeeded in fundamental arithmetics, loop, condition, arrays, and recursion. However, due to the limitation of the JavaScript runtime, we failed to access the global memory which means we are not able to read registers or sensors so far.
+
+### Intel x86 (Macbook pro and Windows/Ubuntu PC)
+#### WAMR
+WAMR core is able to be build on both Mac and PC. However, it can not run `cowsay.wasm` file.
+#### Wasmer
+Wasmer is able to be build on both Mac and PC. It supports `cowsay.wasm` file.
+#### Wasmtime
+Wasmer is able to be build on both Mac and PC. It supports `cowsay.wasm` file.
 
 ## V. Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
@@ -113,7 +126,7 @@ There are two parts in the related works. The first part is the frameworks built
 
 2. Web Assembly Documents
 
-    **Premium Resources**
+    **Premium Resources** (expend)
     
     [WASM Micro Runtime](https://github.com/wyr8633/wasm-micro-runtime) is a standalone WebAssembly runtime with small footprint.
     
