@@ -40,7 +40,7 @@ Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
 #### Wasmer
 [Wasmer](https://github.com/wasmerio/wasmer) is a non-browser standalone WebAssembly runtime which supports WASI and Emscripten. It can be implemented in x86 and ARM devices, embedded in various languages (Rust, C/C++,, Python, Go, Ruby, etc). It is the most comperhensive runtime been explored by members so far.
 
-## Wasmtime
+#### Wasmtime
 [Wasmtime](https://github.com/bytecodealliance/wasmtime), developed by moz://a group, is a standalone wasm-only optimizing runtime specificly for WebAssembly and WASI, which can be used as a command-line utiltiy and a library embedded in a larger application. It supports Rust, C/C++.
 
 ## III. Analysis Results
