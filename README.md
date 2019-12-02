@@ -75,8 +75,15 @@ Since the compilers cannot work on the Arm7L architectures, we tried to write Wa
 WAMR core is able to be build on both Mac and PC. However, it can not run `cowsay.wasm` file.
 #### Wasmer
 Wasmer is able to be build on both Mac and PC. It supports `cowsay.wasm` file.
+1. Custom file: `hello.c` convert to `hello_c.wasm` failed. May not support emscripten. clang failed.
+2. `hello.cpp` convert to `hello_cpp.wasm`successed. Issue fixed. https://github.com/wasmerio/wasmer/issues/327
+3. `math.cpp` convert to `math_cpp.wasm` successed. Math.h function can be called. https://www.geeksforgeeks.org/c-mathematical-functions/
+
 #### Wasmtime
 Wasmer is able to be build on both Mac and PC. It supports `cowsay.wasm` file.
+1. Custom file: `hello.c` convert to `hello_c.wasm` failed. May not support emscripten.
+2. `hello.cpp` convert to `hello_cpp.wasm`successed.
+3. `math.cpp` convert to `math_cpp.wasm` successed. Math.h function can be called.
 
 ## V. Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
