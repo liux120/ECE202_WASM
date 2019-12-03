@@ -44,8 +44,16 @@ Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
 [Wasmtime](https://github.com/bytecodealliance/wasmtime), developed by moz://a group, is a standalone wasm-only optimizing runtime specificly for WebAssembly and WASI, which can be used as a command-line utiltiy and a library embedded in a larger application. It supports Rust, C/C++.
 
 ## III. Analysis Results
-### Cowsay.wasm
+### Testsets
+#### Cowsay.wasm
 In this project, members used a preexisted WebAssembly program called [Cowsay](https://wapm.io/package/cowsay) to verify the implementation of each runtimes. `cowsay.wasm` generates ASCII pictures of an animal with a message, both of which are defined specificly by users. Since `cowsay.wasm` is originally from Rust implementation, it is assumed to be optimized and bug-free in Rust-based runtime.
+
+#### Math.h functions
+
+#### Hello World files
+* hello.c & hello.cpp
+* hello_c.wasm & hello_cpp.wasm
+
 
 ### Arm7L (Raspberry Pi B+)
 #### Compilers
