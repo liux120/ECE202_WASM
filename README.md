@@ -51,8 +51,8 @@ In this project, members used a preexisted WebAssembly program called [Cowsay](h
 #### Math.h functions
 
 #### Hello World files
-* hello.c & hello.cpp
-* hello_c.wasm & hello_cpp.wasm
+* `hello.c` & `hello.cpp`
+* `hello_c.wasm` & `hello_cpp.wasm`
 
 
 ### Arm7L (Raspberry Pi B+)
