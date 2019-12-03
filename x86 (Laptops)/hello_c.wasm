@@ -1,0 +1,3 @@
+asmdylink```/envputsenv
+__memory_baseenvmemoryAB__wasm_apply_relocsmain__dso_handle__post_instantiate
+	#A#Hello, world!
