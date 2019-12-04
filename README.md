@@ -120,7 +120,7 @@ Wasmer is able to be build successfully on both Mac and PC. It supports `cowsay.
   * Test `.wasm` files on WASM runtimes.
 
 ## Devices
-* Raspberry Pi, B+
+* Raspberry Pi: 3 B+, 4.
 * Windows/Ubuntu, dual-OS PC with intel i7-7700k processor.
 * Macbook pro 15", x86-darwin.
 
