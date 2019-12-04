@@ -85,7 +85,7 @@ Since the compilers cannot work on the Arm7L architectures, we tried to write Wa
 Members first tried to build WAM by following the [Build WAMR Core](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md). WAMR core is able to be build successfully on both Mac and PC. However, it can not run `cowsay.wasm` file.
 #### Wasmer & Wasmtime
 Wasmer is able to be build successfully on both Mac and PC. It supports `cowsay.wasm` and `math.wasm` files.
-1. `hello_c.wasm` failed. Does not support `stdio.h`. clang failed.
+1. `hello_c.wasm` successed with self-defined header file `stdio.h`. Does not support emscripten naive `stdio.h`. clang failed.
 2. `hello_cpp.wasm`successed. Issue fixed. https://github.com/wasmerio/wasmer/issues/327
 3. `math_cpp.wasm` successed. `math.h` function can be called. https://www.geeksforgeeks.org/c-mathematical-functions/
 
