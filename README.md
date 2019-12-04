@@ -82,7 +82,7 @@ Since the compilers cannot work on the Arm7L architectures, we tried to write Wa
 
 ### Intel x86 (Macbook pro and Windows/Ubuntu PC)
 #### WAMR
-Members first tried to build WAM by following the [Build WAMR Core](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md). WAMR core is able to be build successfully on both Mac and PC. However, it can not run `cowsay.wasm` file.
+Members first tried to build WAM by following the [Build WAMR Core](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md). WAMR core is able to be build successfully on both Mac and PC. However, it can not run `cowsay.wasm` or `hello_c.wasm` or `test.wasm` file. Error:`Read file to buffer failed: open file test.wasm failed.`
 #### Wasmer & Wasmtime
 Wasmer is able to be build successfully on both Mac and PC. It supports `cowsay.wasm` and `math.wasm` files.
 1. `hello_c.wasm` successed with self-defined header file `stdio.h`. Does not support emscripten naive `stdio.h`. clang failed.
