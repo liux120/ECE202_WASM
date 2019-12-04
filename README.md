@@ -33,6 +33,9 @@ Language | Rust, C/C++ | C | Rust, C/C++ | Rust | C++ | Python
 Compiler | Carnelift, Dynasm.rs, LLVM| Custom | Carnelift | LLVM | LLVM | Custom
 Host APIs | Emscripten | N/A | WASI | N/A | N/A | N/A |
 Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
+Build succeed | Y | Y | Y | N | N | N
+`cowsay.wasm` passed | Y | N | Y | N | N | N
+`math.wasm` passed | Y | N | Y | N | N | N
 
 #### WebAssembly Micro Runtime (WAMR)
 [WAMR](https://github.com/bytecodealliance/wasm-micro-runtime) is a small footprint standalone WebAssembly runtime which includes a WebAssembly VMcore (iwasm), a supporting API, and a application dynamic management mechanism. It is the first runtime explored by members.
@@ -45,15 +48,14 @@ Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
 
 ## III. Analysis Results
 ### Testsets
-#### Cowsay.wasm
+#### Cowsay
 In this project, members used a preexisted WebAssembly program called [Cowsay](https://wapm.io/package/cowsay) to verify the implementation of each runtimes. `cowsay.wasm` generates ASCII pictures of an animal with a message, both of which are defined specificly by users. Since `cowsay.wasm` is originally from Rust implementation, it is assumed to be optimized and bug-free in Rust-based runtime.
 
 #### Math.h functions
-
+* `math.cpp` & `math_cpp.wasm`:functions that uses `math.h` writen in C++.
 #### Hello World files
-* `hello.c` & `hello.cpp`
-* `hello_c.wasm` & `hello_cpp.wasm`
-
+* `hello.c` & `hello.cpp`: Hello world fucntion uses `stdio.h` writen in C.
+* `hello_c.wasm` & `hello_cpp.wasm`: Hello world fucntion uses `<iostream>` writen in C++.
 
 ### Arm7L (Raspberry Pi B+)
 #### Compilers
@@ -80,18 +82,12 @@ Since the compilers cannot work on the Arm7L architectures, we tried to write Wa
 
 ### Intel x86 (Macbook pro and Windows/Ubuntu PC)
 #### WAMR
-WAMR core is able to be build on both Mac and PC. However, it can not run `cowsay.wasm` file.
-#### Wasmer
-Wasmer is able to be build on both Mac and PC. It supports `cowsay.wasm` file.
-1. Custom file: `hello.c` convert to `hello_c.wasm` failed. May not support emscripten. clang failed.
-2. `hello.cpp` convert to `hello_cpp.wasm`successed. Issue fixed. https://github.com/wasmerio/wasmer/issues/327
-3. `math.cpp` convert to `math_cpp.wasm` successed. Math.h function can be called. https://www.geeksforgeeks.org/c-mathematical-functions/
-
-#### Wasmtime
-Wasmer is able to be build on both Mac and PC. It supports `cowsay.wasm` file.
-1. Custom file: `hello.c` convert to `hello_c.wasm` failed. May not support emscripten.
-2. `hello.cpp` convert to `hello_cpp.wasm`successed.
-3. `math.cpp` convert to `math_cpp.wasm` successed. Math.h function can be called.
+Members first tried to build WAM by following the [Build WAMR Core](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md). WAMR core is able to be build successfully on both Mac and PC. However, it can not run `cowsay.wasm` file.
+#### Wasmer & Wasmtime
+Wasmer is able to be build successfully on both Mac and PC. It supports `cowsay.wasm` and `math.wasm` files.
+1. `hello_c.wasm` failed. Does not support `stdio.h`. clang failed.
+2. `hello_cpp.wasm`successed. Issue fixed. https://github.com/wasmerio/wasmer/issues/327
+3. `math_cpp.wasm` successed. `math.h` function can be called. https://www.geeksforgeeks.org/c-mathematical-functions/
 
 ## V. Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
