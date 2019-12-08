@@ -21,9 +21,6 @@ LLVM Project is a collection of modular and reusable compiler and toochain techn
 ### JavaScript VMs (Node.js)
 Javascrip is a widely used programming language of HTML and the Web. It provides WebAssembly JavaScript API to load and run the WebAssembly module inside a `.js` file. Although it is supposed to be run with browers primarily, it can actually run the WebAssembly functions without browsers by using Node.js. As given by the Wikipedia, Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside of a browser. In practise, we first load the WebAssembly module inside the JavaScript file by using `imports`. Then we load the `.wasm` file and read the function to run. We pass the parameters in the terminal as the following format, `./runwasm.js prog.wasm func INT_ARG...`. The testing files are given in the [jsRun](https://github.com/liux120/ECE202_WASM/tree/master/jsRun).  
 
-### WASI
-WebAssembly is considered as an assembly language for a conceptual machine and has the capability of running across all different OSs. WebAssembly is a language does not have direct access to manage files on most operation systems due to stability and security. One solution is to use kernel which sets the barrier between the user's program and the system's core resource. Kernal allows users to access resources through a system call. Since each operating system may have unique system calls, most programming languages provide a standard library that acts as an interface. Upon compiling, toolchains select interface implementation based on targeting system's API. A system interface for WebAssembly, therefore, is necessary. The wasi-core is the most fundamental module inside a WASI. It contains basic principles that all programs need, such as portability, WASI can compile the same source code once and allow the source code running across various devices; and security, WASI provides a sandbox where browsers or runtimes put functions in. The sandbox equipped with file descriptors requires additional permissions. In this project, members discovered WebAssembly runtimes based on the concepts of WebAssembly system interface.
-
 ### WebAssembly Runtimes
 All runtimes support three mainstrain platforms, Linux, macOS, Windows.
 
@@ -46,25 +43,54 @@ Build succeed | Y | Y | Y | N | N | N
 #### Wasmtime
 [Wasmtime](https://github.com/bytecodealliance/wasmtime), developed by moz://a group, is a standalone wasm-only optimizing runtime specificly for WebAssembly and WASI, which can be used as a command-line utiltiy and a library embedded in a larger application. It supports Rust, C/C++.
 
-## III. Analysis Results
-### Used files
+## III. WebAssembly System Interface
+WebAssembly is considered as an assembly language for a conceptual machine and has the capability of running across all different OSs. WebAssembly is a language does not have direct access to manage files on most operation systems due to stability and security. One solution is to use kernel which sets the barrier between the user's program and the system's core resource. Kernal allows users to access resources through a system call. Since each operating system may have unique system calls, most programming languages provide a standard library that acts as an interface. Upon compiling, toolchains select interface implementation based on targeting system's API. A system interface for WebAssembly, therefore, is necessary. The core of the WebAssembly system interface contains the most fundamental modules used for WebAssembly. It contains basic principles that all programs need, such as portability. The WebAssembly system interface can compile the same source code once and allow the source code running across various devices. WebAssembly system interface is more secure since it provides a sandbox where browsers or runtimes put functions in. The sandbox equipped with file descriptors requires additional permissions. In this project, members discovered WebAssembly runtimes based on the concepts of WebAssembly system interface.
+
+### WASI-API
+In this project, members mainly interact with the WASI-API, a family of APIs designed by the Wasmtime project, that proposed as a standard-independent non-Web system-oriented API for WebAssembly. In the browser environment, WebAssembly interacts with the system using the existing Web APIs bundled with browsers. However, there is currently no standard set of APIs that support WebAssmebly programs on different platforms. The WASI-API is created to implement WebAssembly programs on multiple platforms and depend on browser functionality. The core of WASI-API ([WASI Core](https://github.com/bytecodealliance/wasmtime/blob/master/docs/WASI-api.md)) is derived from CloudABI and POSIX. Members have run some system calls provided on macOS and Raspberry Pi.
+
+### POSIX
+Portable Operating System Interface (POSIX) is an IEEE standard designed to facilitate application portability. It is can be used among a large family of Unix derivatives including Linux and macOS. In this project, the WASI-API mostly follows the POSIX such as system-call functions.
+
+## IV. Analysis Results
+This section presents what the members have accomplished in this project. The process of this project can be considered as the following two steps: Compilation of source files and Execution of target files. Each process has been done on multiple ARM and x86 devices with different OS, including two Raspberry Pi (ARMv7, ARMv8) with Raspain and Monjaro; and three laptops with Linux, macOS, and Windows10. The following table listed the over-all results of each process. The rest of this section describes the result in detail.
+
+Devices|Operation System|Compilation (Failed/Succeeded)|Execution (Failed/Succeeded)
+:---:|:---:|:---:|:---:
+Raspberry Pi 3B+ (ARMv7)|Raspain|---|---
+Raspberry Pi 4B+ (ARMv8)|Raspain (32/64bit)|F|S
+|-|Monjaro 64bit|F|S
+Macbook pro (x86-darwin)|macOS Catalina|S|S
+HP (x86)|Windows10|S|S
+PC (x86)|Ubuntu Linux|S|S
+
+### Compile C/C++ into WebAssembly
+This part describes the compilation of source file written in C/C++ into target file written in WebAssembly. In this project, members mainly used two compilers that currently supports WebAssembly, Emscripten(emcc) and LLVM(clang).
+
 #### Cowsay
-In this project, members used a preexisted WebAssembly program called [Cowsay](https://wapm.io/package/cowsay) to verify the implementation of each runtimes. `cowsay.wasm` generates ASCII pictures of an animal with a message, both of which are defined specificly by users. Since `cowsay.wasm` is originally from Rust implementation, it is assumed to be optimized and bug-free in Rust-based runtime.
+In this project, members initially used a pre-existed WebAssembly program called [Cowsay](https://wapm.io/package/cowsay) to verify the implementation of each runtimes. `cowsay.wasm` generates ASCII pictures of an animal with a message, both of which are defined specificly by users. Since `cowsay.wasm` is originally from Rust implementation, it is assumed to be optimized and bug-free in Rust-based runtime.
+* `cowsay.wasm` is pre-existed, therefore, it doesn't need to be compiled (compiled successed).
+
+#### Hello World files
+The hello world files are wrote by members to demostrate basic input and output functions in the system terminal. In this step, members surprisedly realized that both `emcc` and `clang` do not support `stdio.h` out-of-box. The solution is either writing a self-defined `stdio.h` or using the wasi-core provided bu wasmtime project.
+* `hello.c` & `hello_c.wasm`: Hello world fucntion uses `stdio.h` writen in C. Compiled successed.
+* `hello.cpp` & `hello_cpp.wasm`: Hello world fucntion uses `<iostream>` writen in C++. Compiled successed.
 
 #### Math.h functions
-* `math.cpp` & `math_cpp.wasm`:functions that uses `math.h` writen in C++.
-#### Hello World files
-* `hello.c` & `hello.cpp`: Hello world fucntion uses `stdio.h` writen in C.
-* `hello_c.wasm` & `hello_cpp.wasm`: Hello world fucntion uses `<iostream>` writen in C++.
-#### WASI-SKD-8
-* contains header files that currently support wasmtime.
-* some functions does not support wasmer.
+The math files contains functions from `math.h` header file. Members wrotes some simple math functions to demostrate basic algorithm capibility of WebAssembly program.
+* `math.cpp` & `math_cpp.wasm`:functions that uses `math.h` writen in C++. Compiled successed.
+
+#### WASI-SDK-8
+The wasi-sdk contains most of the APIs, header files, and functions used by C and partially used by C++. It is optimized to used on wasmtime. Some of the system-call functions are not support on wasmer. In this part, all files are compiled using `clang-9`, since `emcc` does not support wasi-core. It requires the commond `clang-9 source.c --sysroot /Users/yiruwang/Documents/202/wasi-sdk/share/wasi-sysroot/ -o target.wasm`.
+* `wasi_project` folder contains `.c` and `.wasm` file compiled useing clang-9 by specificlly defined sysroot that use the wasi-sdk.
 
 ### Arm7L (Raspberry Pi B+)
+This part is the implementation of WebAssembly on ARM devices, following by the excution results of each platform.
+
 #### Compilers
-We tested the compilers Emscripten and Rust. Emscripten SDK is an official toolkit to generate `.wasm` from C/C++. However, it is not well-delevoped and have failed to be installed onto the Arm7L devices. We followed the instruction `./emsdk install latest` and get the error: `Error: 'sdk-releases-upstream-b024b71038d1291ed7ec23ecd553bf2c0c8d6da6-64bit' is only provided for 64-bit OSes.` Since Arm7L uses 32-bit instruction set, it is not possible to install the Emscripten compiler onto the Raspberry Pi B+. However, since the Arm8 is a 64-bit processer, it may be able to run the SDK.
+Members tested the compilers Emscripten and Rust. Emscripten SDK is an official toolkit to generate `.wasm` from C/C++. However, it is not well-delevoped and have failed to be installed onto the Arm7L devices. We followed the instruction `./emsdk install latest` and get the error: `Error: 'sdk-releases-upstream-b024b71038d1291ed7ec23ecd553bf2c0c8d6da6-64bit' is only provided for 64-bit OSes.` Since Arm7L uses 32-bit instruction set, it is not possible to install the Emscripten compiler onto the Raspberry Pi B+. However, since the Arm8 is a 64-bit processer, it may be able to run the SDK.
  
-Besides, we also tested the Rust compiler since it has a build-in compiler for WebAssembly. We follow the [tutorial](https://github.com/bytecodealliance/wasmtime/blob/master/docs/WASI-tutorial.md) in the Wasmtime and when we try to build the project by `cargo build --target wasm32-wasi`, we have the error `error: linker rust-lld not found`, which is an unsolved issue within the Rust compiler.
+Besides, members also tested the Rust compiler since it has a build-in compiler for WebAssembly. We follow the [tutorial](https://github.com/bytecodealliance/wasmtime/blob/master/docs/WASI-tutorial.md) in the Wasmtime and when we try to build the project by `cargo build --target wasm32-wasi`, we have the error `error: linker rust-lld not found`, which is an unsolved issue within the Rust compiler.
 
 After all, we haved tried to generate `.wasm` file from C and Rust, but we failed for both. The main issue here is that the compilers work for particular processers' architectures and the Arm7L is not yet included in their development. Thus, if we want to use these compilers, we may need to wait until they are further developed.
 
@@ -83,14 +109,16 @@ To build the wasmtime, members first need to `git pull` their source files and t
 #### Directly writing Wat
 Since the compilers cannot work on the Arm7L architectures, we tried to write WabAssembly code by ourselves. Though it is almost impossible to directly write `.wasm` code due to its binary format, we can write `.wat` code which is somewhat similar to the Assembly code. It can be translated into `.wasm` by a simple function `wat2wasm` provided Node.js. We followed the [WebAssembly Literacy](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and tried the fundamental functions with the help of `Node.js`. The `.wasm` programs are successfully run and the demos are in [jsRun](https://github.com/liux120/ECE202_WASM/tree/master/jsRun). We succeeded in fundamental arithmetics, loop, condition, arrays, and recursion. However, due to the limitation of the JavaScript runtime, we failed to access the global memory which means we are not able to read registers or sensors so far.
 
-### Intel x86 (Macbook pro and Windows/Ubuntu PC)
+### c. Intel x86 (Macbook pro and Windows/Ubuntu PC)
 #### WAMR
 Members first tried to build WAM by following the [Build WAMR Core](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md). WAMR core is able to be build successfully on both Mac and PC. However, it can not run `cowsay.wasm` or `hello_c.wasm` or `test.wasm` file. Error:`Read file to buffer failed: open file test.wasm failed.`
+
 #### Wasmer & Wasmtime
 Wasmer is able to be build successfully on both Mac and PC. It supports `cowsay.wasm` and `math.wasm` files.
 1. `hello_c.wasm` successed with self-defined header file `stdio.h`. Does not support emscripten naive `stdio.h`. clang failed.
 2. `hello_cpp.wasm`successed. Issue fixed. https://github.com/wasmerio/wasmer/issues/327
 3. `math_cpp.wasm` successed. `math.h` function can be called. https://www.geeksforgeeks.org/c-mathematical-functions/
+
 
 ## V. Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
