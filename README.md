@@ -30,7 +30,7 @@ Language | Rust, C/C++ | C | Rust, C/C++ | Rust | C++ | Python
 Compiler | Carnelift, Dynasm.rs, LLVM| Custom | Carnelift | LLVM | LLVM | Custom
 Host APIs | Emscripten | N/A | WASI | N/A | N/A | N/A |
 Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
-Build succeed | Y | Y | Y | N | N | N
+Build succeed | Y | Y | Y | S | N | N
 `cowsay.wasm` passed | Y | N | Y | N | N | N
 `math.wasm` passed | Y | N | Y | N | N | N
 
@@ -116,6 +116,10 @@ Wasmer and Wasmtime is able to be build successfully on all of the x86 devices. 
 * `hello_c.wasm` execution successed with self-defined header file `stdio.h` using `emcc` and `wasi-core` with `clang-9`. However, it can not execute if the`.wasm` file is directly compiled from `emcc` and `clang-9`.
 * `hello_cpp.wasm`successed. [Issue fixed](https://github.com/wasmerio/wasmer/issues/327).
 * math.h function successed.
+
+#### Wasmo
+Wasmo is successfully build on all of the x86 devices. However, `.wasm` file execution failed.
+* [Fixed Error](https://github.com/rust-lang/rust/issues/60149): note: "cc" "-m64" "-L"
 
 
 ## V. Reference
