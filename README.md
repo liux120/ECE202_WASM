@@ -28,7 +28,7 @@ WebAssembly is considered as an assembly language for a conceptual machine and h
 All runtimes support three mainstrain platforms, Linux, macOS, Windows.
 
 Names | Wasmer | WAMR | Wasmtime | WASMO | InNative | Py-wasm
---- | --- | --- | --- | --- | --- | ---
+:---: | :---: | :---: | :---: | :---: | :---: | :---:
 Language | Rust, C/C++ | C | Rust, C/C++ | Rust | C++ | Python
 Compiler | Carnelift, Dynasm.rs, LLVM| Custom | Carnelift | LLVM | LLVM | Custom
 Host APIs | Emscripten | N/A | WASI | N/A | N/A | N/A |
@@ -47,7 +47,7 @@ Build succeed | Y | Y | Y | N | N | N
 [Wasmtime](https://github.com/bytecodealliance/wasmtime), developed by moz://a group, is a standalone wasm-only optimizing runtime specificly for WebAssembly and WASI, which can be used as a command-line utiltiy and a library embedded in a larger application. It supports Rust, C/C++.
 
 ## III. Analysis Results
-### Testsets
+### Used files
 #### Cowsay
 In this project, members used a preexisted WebAssembly program called [Cowsay](https://wapm.io/package/cowsay) to verify the implementation of each runtimes. `cowsay.wasm` generates ASCII pictures of an animal with a message, both of which are defined specificly by users. Since `cowsay.wasm` is originally from Rust implementation, it is assumed to be optimized and bug-free in Rust-based runtime.
 
@@ -56,6 +56,9 @@ In this project, members used a preexisted WebAssembly program called [Cowsay](h
 #### Hello World files
 * `hello.c` & `hello.cpp`: Hello world fucntion uses `stdio.h` writen in C.
 * `hello_c.wasm` & `hello_cpp.wasm`: Hello world fucntion uses `<iostream>` writen in C++.
+#### WASI-SKD-8
+* contains header files that currently support wasmtime.
+* some functions does not support wasmer.
 
 ### Arm7L (Raspberry Pi B+)
 #### Compilers
@@ -107,7 +110,8 @@ Wasmer is able to be build successfully on both Mac and PC. It supports `cowsay.
 * Week 4-5: Get familiar with WASM and make it run on IoT devices
 * Week 5-6: Install and test WASM runtime enviroments.
 * Week 6-8: Compile and basic functions using WASM.
-* Week 8-10: Test .wasm files on various WASM runtimes. 
+* Week 8-9: Test .wasm files on various WASM runtimes. 
+* Week 9-10: Interface the system calls with WASI-SDK using wasmtime.
 
 ## Member Contribution
 * Ximeng: 
@@ -120,7 +124,7 @@ Wasmer is able to be build successfully on both Mac and PC. It supports `cowsay.
   * Test `.wasm` files on WASM runtimes.
 
 ## Devices
-* Raspberry Pi: 3 B+, 4.
+* Raspberry Pi: 3B+, 4B+.
 * Windows/Ubuntu, dual-OS PC with intel i7-7700k processor.
 * Macbook pro 15", x86-darwin.
 
