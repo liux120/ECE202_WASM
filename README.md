@@ -88,11 +88,7 @@ The wasi-sdk contains most of the APIs, header files, and functions used by C an
 This part is the implementation of WebAssembly on ARM devices, following by the excution results of each platform.
 
 #### Compilers
-Members tested the compilers Emscripten and Rust. Emscripten SDK is an official toolkit to generate `.wasm` from C/C++. However, it is not well-delevoped and have failed to be installed onto the Arm7L devices. We followed the instruction `./emsdk install latest` and get the error: `Error: 'sdk-releases-upstream-b024b71038d1291ed7ec23ecd553bf2c0c8d6da6-64bit' is only provided for 64-bit OSes.` Since Arm7L uses 32-bit instruction set, it is not possible to install the Emscripten compiler onto the Raspberry Pi B+. However, since the Arm8 is a 64-bit processer, it may be able to run the SDK.
- 
-Besides, members also tested the Rust compiler since it has a build-in compiler for WebAssembly. We follow the [tutorial](https://github.com/bytecodealliance/wasmtime/blob/master/docs/WASI-tutorial.md) in the Wasmtime and when we try to build the project by `cargo build --target wasm32-wasi`, we have the error `error: linker rust-lld not found`, which is an unsolved issue within the Rust compiler.
-
-After all, we haved tried to generate `.wasm` file from C and Rust, but we failed for both. The main issue here is that the compilers work for particular processers' architectures and the Arm7L is not yet included in their development. Thus, if we want to use these compilers, we may need to wait until they are further developed.
+Members tested the compilers Emscripten and Rust. Emscripten SDK is an official toolkit to generate `.wasm` from C/C++. However, it is not well-delevoped and have failed to be installed onto the Arm7L devices. Members followed the instruction `./emsdk install latest` and get the error: `Error: 'sdk-releases-upstream-b024b71038d1291ed7ec23ecd553bf2c0c8d6da6-64bit' is only provided for 64-bit OSes.` Since Arm7L uses 32-bit instruction set, it is not possible to install the Emscripten compiler onto the Raspberry Pi B+. However, since the Arm8 is a 64-bit processer, it may be able to run the SDK. Besides, members also tested the Rust compiler since it has a build-in compiler for WebAssembly. Members followed the [tutorial](https://github.com/bytecodealliance/wasmtime/blob/master/docs/WASI-tutorial.md) in the Wasmtime and when tried to build the project by `cargo build --target wasm32-wasi`, members have the error `error: linker rust-lld not found`, which is an unsolved issue within the Rust compiler. After all, members haved tried to generate `.wasm` file from C and Rust, but members failed for both. The main issue here is that the compilers work for particular processers' architectures and the Arm7L is not yet included in their development. Thus, if members want to use these compilers, we may need to wait until they are further developed.
 
 #### WAMR
 Due to the different processer's architecture, the WAMR cannot run properly in the Raspberry Pi B+. When we try to build the runtime, there are several problems showing up.
@@ -101,23 +97,25 @@ make[1]: *** [CMakeFiles/Makefile2:110: CMakeFiles/vmlib.dir/all] Error 2
 make: *** [Makefile:130: all] Error 2`
 
 #### Wasmer
-Wasmer provides runtime for Intel processers but not for the Arm7L. As we tried to install the runtime by `curl https://get.wasmer.io -sSfL | sh`, we have the error: `The system architecture (armv7l) is not supported by this installation script.`. It is said to be further developed for IoT devices, so the arm architectures may be available in their future version.
+Wasmer provides runtime for Intel processers but not for the Arm7L. As we tried to install the runtime by `curl https://get.wasmer.io -sSfL | sh`, we have the error: `The system architecture (armv7l) is not supported by this installation script.`. It is said to be further developed for IoT devices, so the arm architectures may be available in their future version. On Nov.17th, wasmer announced that it supports the Rapsbarry Pi 4B+ (Armv8). Members tried to install wasmer following the guildline, however, the wasmer does not support on defalut Raspain 32bit or its 64bit kernal. Members later tried on Mojaro, and successfully installed wasmer. 
 
 #### Wasmtime
-To build the wasmtime, members first need to `git pull` their source files and then build their rust program by `cargo build --release`. Similar to Wasmer, the build failed with error: `error: could not compile wasi-common`. Besides, it has issue with some other packages, like `unicode-xid`, `libc`, `proc-macro2` and `cc`. Although we do not know the exact reason for the error, but it seems to be the issue of its 32-bits instruction set.
+To build the Wasmtime, members first used `git pull` their source files and then build their rust program by `cargo build --release`. Similar to Wasmer, the build failed with error: `error: could not compile wasi-common`. Besides, it has issue with some other packages, like `unicode-xid`, `libc`, `proc-macro2` and `cc`. This error seems to be the issue of its 32-bits instruction set. Later, memebrs used `curl https://wasmtime.dev/install.sh -sSf | bash`. The result shows the Wasmtime currently does not support on ARM.
 
 #### Directly writing Wat
 Since the compilers cannot work on the Arm7L architectures, we tried to write WabAssembly code by ourselves. Though it is almost impossible to directly write `.wasm` code due to its binary format, we can write `.wat` code which is somewhat similar to the Assembly code. It can be translated into `.wasm` by a simple function `wat2wasm` provided Node.js. We followed the [WebAssembly Literacy](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and tried the fundamental functions with the help of `Node.js`. The `.wasm` programs are successfully run and the demos are in [jsRun](https://github.com/liux120/ECE202_WASM/tree/master/jsRun). We succeeded in fundamental arithmetics, loop, condition, arrays, and recursion. However, due to the limitation of the JavaScript runtime, we failed to access the global memory which means we are not able to read registers or sensors so far.
 
-### c. Intel x86 (Macbook pro and Windows/Ubuntu PC)
+### Intel x86 (Macbook pro and Windows/Ubuntu PC)
 #### WAMR
-Members first tried to build WAM by following the [Build WAMR Core](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md). WAMR core is able to be build successfully on both Mac and PC. However, it can not run `cowsay.wasm` or `hello_c.wasm` or `test.wasm` file. Error:`Read file to buffer failed: open file test.wasm failed.`
+Members first tried to build WAMR by following the [Build WAMR Core](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md). WAMR core is able to be build successfully on both Mac and PC. However, it can not run `cowsay.wasm` or `hello_c.wasm` or `test.wasm` file. Error:`Read file to buffer failed: open file test.wasm failed.`
+* cowsay execution failed.
+* hello world function execution failed.
 
 #### Wasmer & Wasmtime
-Wasmer is able to be build successfully on both Mac and PC. It supports `cowsay.wasm` and `math.wasm` files.
-1. `hello_c.wasm` successed with self-defined header file `stdio.h`. Does not support emscripten naive `stdio.h`. clang failed.
-2. `hello_cpp.wasm`successed. Issue fixed. https://github.com/wasmerio/wasmer/issues/327
-3. `math_cpp.wasm` successed. `math.h` function can be called. https://www.geeksforgeeks.org/c-mathematical-functions/
+Wasmer and Wasmtime is able to be build successfully on all of the x86 devices. It supports cowsay, math.h, and wasi_sdk funcitons. However, using different compilers tend to affect the reslut.
+* `hello_c.wasm` execution successed with self-defined header file `stdio.h` using `emcc` and `wasi-core` with `clang-9`. However, it can not execute if the`.wasm` file is directly compiled from `emcc` and `clang-9`.
+* `hello_cpp.wasm`successed. [Issue fixed](https://github.com/wasmerio/wasmer/issues/327).
+* math.h function successed.
 
 
 ## V. Reference
