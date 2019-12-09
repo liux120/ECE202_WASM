@@ -24,15 +24,15 @@ Javascrip is a widely used programming language of HTML and the Web. It provides
 ### WebAssembly Runtimes
 All runtimes support three mainstrain platforms, Linux, macOS, Windows.
 
-Names | Wasmer | WAMR | Wasmtime | WASMO | InNative | Py-wasm
-:---: | :---: | :---: | :---: | :---: | :---: | :---:
-Language | Rust, C/C++ | C | Rust, C/C++ | Rust | C++ | Python
-Compiler | Carnelift, Dynasm.rs, LLVM| Custom | Carnelift | LLVM | LLVM | Custom
-Host APIs | Emscripten | N/A | WASI | N/A | N/A | N/A |
-Pkt manager | Wapm | N/A | WASI | N/A | N/A | N/A |
-Build succeed | Y | Y | Y | S | N | N
-`cowsay.wasm` passed | Y | N | Y | N | N | N
-`math.wasm` passed | Y | N | Y | N | N | N
+Names | Wasmer | WAMR | Wasmtime | WASMO
+:---: | :---: | :---: | :---: | :---:
+Language | Rust, C/C++ | C | Rust, C/C++ | Rust
+Compiler | Carnelift, Dynasm.rs, LLVM| Custom | Carnelift | LLVM
+Host APIs | Emscripten | N/A | WASI | N/A 
+Pkt manager | Wapm | N/A | WASI | N/A 
+Build succeed | Y | Y | Y | S 
+`cowsay.wasm` passed | Y | N | Y | N 
+`math.wasm` passed | Y | N | Y | N 
 
 #### WebAssembly Micro Runtime (WAMR)
 [WAMR](https://github.com/bytecodealliance/wasm-micro-runtime) is a small footprint standalone WebAssembly runtime which includes a WebAssembly VMcore (iwasm), a supporting API, and a application dynamic management mechanism. It is the first runtime explored by members.
