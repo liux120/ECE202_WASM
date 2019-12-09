@@ -225,6 +225,7 @@ There are two parts in the related works. The first part is the frameworks built
   
 #### In progress
 * WASI with System calls.
+* UART setup on Ubuntu: https://blog.mypapit.net/2008/05/how-to-use-usb-serial-port-converter-in-ubuntu.html
 
 #### Failure
 * Wasmo: 
