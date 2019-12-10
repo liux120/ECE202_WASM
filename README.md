@@ -121,6 +121,13 @@ Wasmer and Wasmtime is able to be build successfully on all of the x86 devices. 
 Wasmo is successfully build on all of the x86 devices. However, `.wasm` file execution failed.
 * [Fixed Error](https://github.com/rust-lang/rust/issues/60149): note: "cc" "-m64" "-L"
 
+## IoT Application
+* edge computation capability.
+* Socket.
+### Ubuntu
+
+### Raspberry Pi
+
 
 ## V. Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
