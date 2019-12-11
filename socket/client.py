@@ -10,11 +10,11 @@ def main():
     
     connected = False
     while not connected:
-    try:
-        s.connect((host,port))
-        connected = True
-    except Exception as e:
-        pass #Do nothing, just try again
+        try:
+            s.connect((host,port))
+            connected = True
+        except Exception as e:
+            pass #Do nothing, just try again
     
     # s.connect((host, port))
     s.send("Hello server!".encode())
