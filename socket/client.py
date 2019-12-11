@@ -7,6 +7,7 @@ def main():
     # port = 60000                    # Reserve a port for your service.
     port = int(sys.argv[1])
     host = sys.argv[2]
+    filename = sys.argv[3]
     
     connected = False
     while not connected:
@@ -19,7 +20,7 @@ def main():
     # s.connect((host, port))
     s.send("Hello server!".encode())
 
-    with open('received.wasm', 'wb') as f:
+    with open(filename, 'wb') as f:
         print ('file opened')
         while True:
             print('receiving data...')
