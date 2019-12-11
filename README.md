@@ -126,8 +126,8 @@ Wasmo is successfully build on all of the x86 devices. However, `.wasm` file exe
 ### Sample Codes
 As dicussed before, we have compiled several sample codes with Emsdk and Clang. We can put those codes into some categories and here is a table showing the result of them.
 
-Code Categories|Linux based PC|Raspberry Pi 4 (ARMv8)|Compiler|Note
-:---:|:---:|:---:|:---:
+Code Categories | Linux based PC | Raspberry Pi 4 (ARMv8) | Compiler | Note
+:---:|:---:|:---:|:---:|:---:
 Logical (loop, condition...)|Y|Y|Emsdk/Clang/Rust/WAT|---
 Math.h & Vector.h|Y|Y|Emsdk/Clang|---
 string.h|Y|Y|Emsdk/Clang|---
