@@ -7,7 +7,16 @@ def main():
     # port = 60000                    # Reserve a port for your service.
     port = int(sys.argv[1])
     host = sys.argv[2]
-    s.connect((host, port))
+    
+    connected = False
+    while not connected:
+    try:
+        s.connect((host,port))
+        connected = True
+    except Exception as e:
+        pass #Do nothing, just try again
+    
+    # s.connect((host, port))
     s.send("Hello server!".encode())
 
     with open('received.wasm', 'wb') as f:
