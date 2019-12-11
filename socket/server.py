@@ -7,6 +7,7 @@ def main():
     host = socket.gethostname()     # Get local machine name
     host = sys.argv[2]
     # host = '192.168.50.2'
+    filename = sys.argv[3]
     s.bind((host, port))            # Bind to the port
     s.listen(5)                     # Now wait for client connection.
     print(port, host)
@@ -18,7 +19,7 @@ def main():
     data = conn.recv(1024)
     print('Server received', repr(data))
 
-    filename=input('filename(type\'quit\' to quit): ')
+    # filename=input('filename(type\'quit\' to quit): ')
     f = open(filename,'rb')
     l = f.read(1024)
     while (l):
