@@ -121,12 +121,21 @@ Wasmer and Wasmtime is able to be build successfully on all of the x86 devices. 
 Wasmo is successfully build on all of the x86 devices. However, `.wasm` file execution failed.
 * [Fixed Error](https://github.com/rust-lang/rust/issues/60149): note: "cc" "-m64" "-L"
 
-## IoT Application
-* edge computation capability.
-* Socket.
-### Ubuntu
+## WASM Application
 
-### Raspberry Pi
+### Sample Codes
+As dicussed before, we have compiled several sample codes with Emsdk and Clang. We can put those codes into some categories and here is a table showing the result of them.
+
+Code Categories|Linux based PC|Raspberry Pi 4 (ARMv8)|Compiler|Note
+:---:|:---:|:---:|:---:
+Logical (loop, condition...)|Y|Y|Emsdk/Clang/Rust/WAT|---
+Math.h & Vector.h|Y|Y|Emsdk/Clang|---
+string.h|Y|Y|Emsdk/Clang|---
+stdio.h|Y|Y|Emsdk/Clang|Emsdk requries customized stdio.h
+file Read/Write|Y|N|Clang|requrie `--dir=.` in the commend for access ;Wasmer doesn't support file W/R on ARM
+access to sensors (/proc or /dev)|Y|N|Clang|Can read mouse but have trouble with UART
+
+### Mouse Scan Application
 
 
 ## V. Reference
