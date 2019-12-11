@@ -1,1 +1,1 @@
-# This directory contains the setup procedures for compilers and runtimes
+# Setup procedure for compilers and runtimes
