@@ -84,7 +84,7 @@ The math files contains functions from `math.h` header file. Members wrotes some
 The wasi-sdk contains most of the APIs, header files, and functions used by C and partially used by C++. It is optimized to used on wasmtime. Some of the system-call functions are not support on wasmer. In this part, all files are compiled using `clang-9`, since `emcc` does not support wasi-core. It requires the commond `clang-9 source.c --sysroot /Users/yiruwang/Documents/202/wasi-sdk/share/wasi-sysroot/ -o target.wasm`.
 * `wasi_project` folder contains `.c` and `.wasm` file compiled useing clang-9 by specificlly defined sysroot that use the wasi-sdk.
 
-### Arm7L (Raspberry Pi B+)
+### ARMv7L / ARMv8 (Raspberry Pi B+)
 This part is the implementation of WebAssembly on ARM devices, following by the excution results of each platform.
 
 #### Compilers
