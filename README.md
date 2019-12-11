@@ -132,8 +132,10 @@ Logical (loop, condition...)|Y|Y|Emsdk/Clang/Rust/WAT|---
 Math.h & Vector.h|Y|Y|Emsdk/Clang|---
 string.h|Y|Y|Emsdk/Clang|---
 stdio.h|Y|Y|Emsdk/Clang|Emsdk requries customized stdio.h
-file Read/Write|Y|N|Clang|requrie `--dir=.` in the commend for access ;Wasmer doesn't support file W/R on ARM
+file Read/Write|Y|N|Clang|requrie '--dir=.' in the commend for access ;Wasmer doesn't support file W/R on ARM
 access to sensors (/proc or /dev)|Y|N|Clang|Can read mouse but have trouble with UART
+
+The fundamental functions including math computation, vector computation, and string are supported by both Emsdk and Clang. Also, those functions can run on both PC and Raspberry Pi. For the standard input/output (stdio.h), Clang is supporting but Emsdk is not yet. To make Emsdk able to compile the code, we have to include a customzied `stdio.h` file in the code's directory. The compiled code can run on PC and Pi. For file read/write, Emsdk does not support the functions while Clang supports them by using [wasi-sdk](https://github.com/CraneStation/wasi-sdk/releases). The compiled codes work on the PC, but it casted an error `bad address` on Raspberry Pi. This may be due to the partial support to ARM provided by Wasmer and thus we have no access to files. With the help of file read/write, we are able to read ports on PC end. We have successfully read data from mouse, but not from UART (UART can be read from the original C code). It seems that the WASM runtimes (Wasmtime and Wasmer) still don't fully support all the system calls.
 
 ### Mouse Scan Application
 
