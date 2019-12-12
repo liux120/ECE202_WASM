@@ -84,6 +84,23 @@ The math files contains functions from `math.h` header file. Members wrotes some
 The wasi-sdk contains most of the APIs, header files, and functions used by C and partially used by C++. It is optimized to used on wasmtime. Some of the system-call functions are not support on wasmer. In this part, all files are compiled using `clang-9`, since `emcc` does not support wasi-core. It requires the commond `clang-9 source.c --sysroot /Users/yiruwang/Documents/202/wasi-sdk/share/wasi-sysroot/ -o target.wasm`.
 * `wasi_project` folder contains `.c` and `.wasm` file compiled useing clang-9 by specificlly defined sysroot that use the wasi-sdk.
 
+### Intel x86 (Macbook pro and Windows/Ubuntu PC)
+#### WAMR
+Members first tried to build WAMR by following the [Build WAMR Core](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md). WAMR core is able to be build successfully on both Mac and PC. However, it can not run `cowsay.wasm` or `hello_c.wasm` or `test.wasm` file. Error:`Read file to buffer failed: open file test.wasm failed.`
+* cowsay execution failed.
+* hello world function execution failed.
+
+#### Wasmer & Wasmtime
+Wasmer and Wasmtime is able to be build successfully on all of the x86 devices. It supports cowsay, math.h, and wasi_sdk funcitons. However, using different compilers tend to affect the reslut.
+* `hello_c.wasm` execution successed with self-defined header file `stdio.h` using `emcc` and `wasi-core` with `clang-9`. However, it can not execute if the`.wasm` file is directly compiled from `emcc` and `clang-9`.
+* `hello_cpp.wasm`successed. [Issue fixed](https://github.com/wasmerio/wasmer/issues/327).
+* math.h function successed.
+* read/write file function successed.
+
+#### Wasmo
+Wasmo is successfully build on all of the x86 devices. However, `.wasm` file execution failed.
+* [Fixed Error](https://github.com/rust-lang/rust/issues/60149): note: "cc" "-m64" "-L"
+
 ### ARMv7L / ARMv8 (Raspberry Pi B+)
 This part is the implementation of WebAssembly on ARM devices, following by the excution results of each platform.
 
@@ -101,25 +118,13 @@ make: *** [Makefile:130: all] Error 2`
 
 #### Wasmer
 Wasmer provides runtime for Intel processers but not for the Arm7L. As we tried to install the runtime by `curl https://get.wasmer.io -sSfL | sh`, we have the error: `The system architecture (armv7l) is not supported by this installation script.`. It is said to be further developed for IoT devices, so the arm architectures may be available in their future version. On Nov.17th, wasmer announced that it supports the Rapsbarry Pi 4B+ (Armv8). Members tried to install wasmer following the guildline, however, the wasmer does not support on defalut Raspain 32bit or its 64bit kernal. Members later tried on Mojaro, and successfully installed wasmer. 
+* `hello_c.wasm` successed.
+* `hello_cpp.wasm`successed.
+* math.h function successed.
+* read/write file function failed.
 
 #### Wasmtime
 To build the Wasmtime, members first used `git pull` their source files and then build their rust program by `cargo build --release`. Similar to Wasmer, the build failed with error: `error: could not compile wasi-common`. Besides, it has issue with some other packages, like `unicode-xid`, `libc`, `proc-macro2` and `cc`. This error seems to be the issue of its 32-bits instruction set. Later, memebrs used `curl https://wasmtime.dev/install.sh -sSf | bash`. The result shows the Wasmtime currently does not support on ARM.
-
-### Intel x86 (Macbook pro and Windows/Ubuntu PC)
-#### WAMR
-Members first tried to build WAMR by following the [Build WAMR Core](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md). WAMR core is able to be build successfully on both Mac and PC. However, it can not run `cowsay.wasm` or `hello_c.wasm` or `test.wasm` file. Error:`Read file to buffer failed: open file test.wasm failed.`
-* cowsay execution failed.
-* hello world function execution failed.
-
-#### Wasmer & Wasmtime
-Wasmer and Wasmtime is able to be build successfully on all of the x86 devices. It supports cowsay, math.h, and wasi_sdk funcitons. However, using different compilers tend to affect the reslut.
-* `hello_c.wasm` execution successed with self-defined header file `stdio.h` using `emcc` and `wasi-core` with `clang-9`. However, it can not execute if the`.wasm` file is directly compiled from `emcc` and `clang-9`.
-* `hello_cpp.wasm`successed. [Issue fixed](https://github.com/wasmerio/wasmer/issues/327).
-* math.h function successed.
-
-#### Wasmo
-Wasmo is successfully build on all of the x86 devices. However, `.wasm` file execution failed.
-* [Fixed Error](https://github.com/rust-lang/rust/issues/60149): note: "cc" "-m64" "-L"
 
 ## WASM Applications
 
