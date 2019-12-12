@@ -148,9 +148,9 @@ Since we are able to read data from mouse on Linux based PC, we built a small sy
 
 In the process, firstly, a socket connection is built and Pi sends a code `copy.wasm` to PC. Then, on the PC side, it runs the code with Wasmtime or Wasmer, and reads the data from mouse and save the data into `output.txt`. Finally, another connection is built from PC to Pi, and the `output.txt` is sent to Pi. This process provides a framework to enable request for sensors' data between devices using WASM.
 
-The result from two devices are given below.
-![Ternimal at Pi](https://github.com/liux120/ECE202_WASM/blob/master/socket/mouse_read_pi.png)
-![Ternimal at PC](https://github.com/liux120/ECE202_WASM/blob/master/socket/mouse_read_linux.png)
+The result from two devices are given below. The first image is from Pi and the second one is from Linux-based PC.
+![Ternimal at Pi](https://github.com/liux120/ECE202_WASM/blob/master/socket/mouse_read_pi.png | width=100)
+![Ternimal at PC](https://github.com/liux120/ECE202_WASM/blob/master/socket/mouse_read_linux.png | width=100)
 
 ## V. Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
