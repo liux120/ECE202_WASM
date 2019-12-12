@@ -135,13 +135,22 @@ Stdio.h|Y|Y|Emsdk/Clang|Emsdk requries customized stdio.h
 File Read/Write|Y|N|Clang|Requrie '--dir=.' in the commend for access ;Wasmer doesn't support file W/R on ARM
 Access to sensors (/proc or /dev)|Y|N|Clang|Can read mouse but have trouble with UART
 Access to sensors (wiringPi.h)|N|N|---|Cannot find source code from the Internet on PC; cannot compile on Pi
+Socket|N|N|---|Compilers and runtimes do not support socket yet
 
 The fundamental functions including math computation, vector computation, and string are supported by both Emsdk and Clang. Also, those functions can run on both PC and Raspberry Pi. For the standard input/output (stdio.h), Clang is supporting but Emsdk is not yet. To make Emsdk able to compile the code, we have to include a customzied `stdio.h` file in the code's directory. The compiled code can run on PC and Pi. For file read/write, Emsdk does not support the functions while Clang supports them by using [wasi-sdk](https://github.com/CraneStation/wasi-sdk/releases). The compiled codes work on the PC, but it casted an error `bad address` on Raspberry Pi. This may be due to the partial support to ARM provided by Wasmer and thus we have no access to files. 
 
 With the help of file read/write, we are able to read ports on PC through files at /proc and /dev. We have successfully read data from mouse, but not from UART (UART can be read from the original C code). It seems that the WASM runtimes (Wasmtime and Wasmer) still don't fully support all the system calls. Besides, on Pi, we also tried to read sensors by using header file `wiringPi.h`, but we are not able to find the source code from the Internet and also the header file from Pi only declares the functions without the source code. Thus, we failed to read sensors on Pi.
 
-### Mouse Scan Application
+Besides, we tried to build IPv4 communication using socket with WASM. However, it turned out that all the compilers have not supported socket yet. Also, in the description of runtimes, they do not support socket either. However, in the [wasi-sdk](https://github.com/CraneStation/wasi-sdk/releases), they already provided the system calls for socket. So, we can expect to see the support from compilers and runtimes in the future.
 
+### Mouse Scan Application
+Since we are able to read data from mouse on Linux based PC, we built a small system so that the Raspberry Pi can send a WASM code (for reading mouse information) to the computer, and computer run the code and send the result back to Pi. The connection is built based on the python code, since they cannot be built by WASM yet.
+
+In the process, firstly, a socket connection is built and Pi sends a code `copy.wasm` to PC. Then, on the PC side, it runs the code with Wasmtime or Wasmer, and reads the data from mouse and save the data into `output.txt`. Finally, another connection is built from PC to Pi, and the `output.txt` is sent to Pi. This process provides a framework to enable request for sensors' data between devices using WASM.
+
+The result from two devices are given below.
+![Ternimal at Pi](https://github.com/liux120/ECE202_WASM/blob/master/socket/mouse_read_pi.png)
+![Ternimal at PC](https://github.com/liux120/ECE202_WASM/blob/master/socket/mouse_read_linux.png)
 
 ## V. Reference
 1. Start-up gauide for WebAssembly: https://webassembly.org/getting-started/developers-guide/
