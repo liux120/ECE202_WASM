@@ -4,10 +4,10 @@
 Wasmer can be installed on both Intel and ARMv8 based processors. Meanwhile, Wasmtime and WAMR only support Intel processors so far.
 
 #### Wasmer:
-```curl https://get.wasmer.io -sSfL | sh```
+```$ curl https://get.wasmer.io -sSfL | sh```
 
 #### Wasmtime:
-```curl https://wasmtime.dev/install.sh -sSf | bash```
+```$ curl https://wasmtime.dev/install.sh -sSf | bash```
 
 #### WAMR:
 Follow the [setup](https://github.com/bytecodealliance/wasm-micro-runtime/blob/master/doc/build_wamr.md) provided by the WAMR.
@@ -35,25 +35,25 @@ EMSDK is an official compiler for C/C++ to WASM. The [setup](https://emscripten.
 
 ```
 # Get the emsdk repo
-git clone https://github.com/emscripten-core/emsdk.git
+$ git clone https://github.com/emscripten-core/emsdk.git
 
 # Enter that directory
-cd emsdk
+$ cd emsdk
 
 # Fetch the latest version of the emsdk (not needed the first time you clone)
-git pull
+$ git pull
 
 # Download and install the latest SDK tools.
-./emsdk install latest
+$ ./emsdk install latest
 
 # Make the "latest" SDK "active" for the current user. (writes ~/.emscripten file)
-./emsdk activate latest
+$ ./emsdk activate latest
 
 # Activate PATH and other environment variables in the current terminal
-source ./emsdk_env.sh
+$ source ./emsdk_env.sh
 
 # compile the code
-emcc demo.c -o demo.wasm
+$ emcc demo.c -o demo.wasm
 ```
 
 #### Clang
@@ -65,3 +65,7 @@ To make Clang work, we need to direct it to a WASI library, which is called [was
 
 ```
 
+Once the path is added, we can compile c code into WASM. Note that we need to use `--sysroot` to direct to the library where the wasi-sdk is located.
+```
+$ clang demo.c --sysroot <path to sysroot> -o demo.wasm
+```
