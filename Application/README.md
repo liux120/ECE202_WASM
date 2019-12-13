@@ -22,5 +22,6 @@ $ python3 client.py 40000 192.168.50.38 received.wasm \
 Note that at the PC side, `sudo chmod -o+rw` is required for the access to system files.
 
 The results are shown in the figures.
+
 <img src="https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_pi.png" width="400">
 <img src="https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_linux.png" width="400">
