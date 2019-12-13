@@ -155,8 +155,8 @@ Since we are able to read data from mouse on Linux based PC, we built a small sy
 In the process, firstly, a socket connection is built and Pi sends a code `copy.wasm` to PC. Then, on the PC side, it runs the code with Wasmtime or Wasmer, and reads the data from mouse and save the data into `output.txt`. Finally, another connection is built from PC to Pi, and the `output.txt` is sent to Pi. This process provides a framework to enable request for sensors' data between devices using WASM.
 
 The result from two devices are given below. The first image is from Pi and the second one is from Linux-based PC.
-<img src="https://github.com/liux120/ECE202_WASM/blob/master/socket/mouse_read_pi.png" width="400">
-<img src="https://github.com/liux120/ECE202_WASM/blob/master/socket/mouse_read_linux.png" width="400">
+<img src="https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_pi.png" width="400">
+<img src="https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_linux.png" width="400">
 
 ### Other Application
 Meanwhile, we also tried to compile a CNN neural networks into WASM and send it from PC to Pi and make it run for the purpose of edge devices computation. However, after we compile the C code into WASM, the size of the WASM code is more than 400 MB even though the original C code is less than 1 MB. Since WASM is suppoed to be a light-weight code and easy to transmit, we doubt that the compiler Clang is not mature enough for a complex system yet. Further Study may be requried to obtain a reasonable result.
