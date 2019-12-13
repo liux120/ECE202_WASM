@@ -8,10 +8,10 @@ To Run the code with one commend of line. Do as the following.
 
 ```
 # Pi Terminal
-$ python3 server.py 40000 192.168.50.38 copy.wasm && python3 client.py 50000 192.168.50.2 input.txt && od -t x1 input.txt
+$ python3 server.py 40000 192.168.50.38 copy.wasm <br/> && python3 client.py 50000 192.168.50.2 input.txt <br/> && od -t x1 input.txt
 
 # PC Terminal
-$ python3 client.py 40000 192.168.50.38 received.wasm && sudo chmod -o+rw /dev/input/mice && wasmtime --dir=. --dir=/dev/input received.wasm /dev/input/mice output.txt && python3 server.py 50000 192.168.50.2 output.txt
+$ python3 client.py 40000 192.168.50.38 received.wasm <br/> && sudo chmod -o+rw /dev/input/mice <br/> && wasmtime --dir=. --dir=/dev/input received.wasm /dev/input/mice output.txt <br/> && python3 server.py 50000 192.168.50.2 output.txt
 ```
 
 Note that at the PC side, `sudo chmod -o+rw` is required for the access to system files.
