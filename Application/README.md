@@ -23,5 +23,5 @@ Note that at the PC side, `sudo chmod -o+rw` is required for the access to syste
 
 The results are shown in the figures.
 
-<img src="https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_pi.png" width="400">
-<img src="https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_linux.png" width="400">
+<img src="https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_pi.png" width="340">
+<img src="https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_linux.png" width="340">
