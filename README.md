@@ -162,6 +162,9 @@ The source code is given in the directory of [Application](https://github.com/li
 
 The result from two devices are given below. The first image is from Pi and the second one is from Linux-based PC.
 
+<img src="/assets/images/mouse_read_pi.png" alt="">
+<img src="/assets/images/mouse_read_linux.png" alt="">
+
 ![pi](https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_pi.png)
 ![pc](https://github.com/liux120/ECE202_WASM/blob/master/Application/mouse_read_linux.png)
 
