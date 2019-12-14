@@ -62,6 +62,9 @@ Clang-9 is equiped with LLVM for compiling the C code into WASM. [Here](https://
 To make Clang work, we need to direct it to a WASI library, which is called [wasi-sdk](https://github.com/CraneStation/wasi-sdk/releases). After we download the library, we need to add it to our path.
 
 ```
+export WASI_SYSINTERFACE_HOME="$HOME/path-to/wasi-sdk"
+export PATH="$WASI_SYSINTERFACE_HOME/bin:$PATH"
+export WASI_SYSROOT="$WASI_SYSINTERFACE_HOME/share/wasi-sysroot"
 
 ```
 
