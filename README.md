@@ -162,8 +162,8 @@ The source code is given in the directory of [Application](https://github.com/li
 
 The result from two devices are given below. The first image is from Pi and the second one is from Linux-based PC.
 
-<img src="{{site.url}}/assets/images/mouse_read_pi.png" alt="" width="420">
-<img src="{{site.url}}/assets/images/mouse_read_linux.png" alt=""  width="420">
+<img src="/assets/images/mouse_read_pi.png" alt="" width="420">
+<img src="/assets/images/mouse_read_linux.png" alt=""  width="420">
 
 ### Other Application
 Meanwhile, we also tried to compile a CNN neural networks into WASM and send it from PC to Pi and make it run for the purpose of edge devices computation. However, after we compile the C code into WASM, the size of the WASM code is more than 400 MB even though the original C code is less than 1 MB. Since WASM is suppoed to be a light-weight code and easy to transmit, we doubt that the compiler Clang is not mature enough for a complex system yet. Further Study may be requried to obtain a reasonable result.
