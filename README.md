@@ -3,6 +3,7 @@ This is a course project of EE202 embedded system. The group members are Ximeng 
 Project #11 Framework to Expose IoT Sensor and Actuator Services.
 
 Here is the URL to the github repo: https://github.com/liux120/ECE202_WASM
+The WebSite is: https://liux120.github.io/ECE202_WASM/
 
 ## Abstract  
 WebAssembly, also know as Wasm, is a binary instruction format for a stack-based virtual machine. WebAssembly is originally designed for the compilation of high-level languages and deployed on the Web for client and server applications. It can run large, complex applications on the web and brings predictable performance to the web platform. Nowadays, developers are starting to push WebAssembly beyond the browser, since it provides a fast, scalable, and secure way to run the same code across all machines. In this project, members implemented WASM with and without the browser on Raspberry Pi (B+) and laptops (Windows, Linux, macOS). Members also tested various WASM under heterogeneous settings. The rest of this report is constructed as follows: Section I, providing basic introduction and theoretical backgrounds of WebAssembly; Section II, introducing test environment; Section III, Analyzing; Section IV, future and conclusion.
